@@ -1,0 +1,53 @@
+.footer__social-media {
+  background-color: #1f1c1c;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1px;
+  position: relative;
+  display: grid;
+  height: 100px;
+}
+
+ion-icon {
+  background-color: #F9F9F9;
+  vertical-align: middle;
+  margin-bottom: 7px;
+  margin-left: 30px;
+  margin-right: 8px;
+  font-weight: 800;
+  font-size: 18px;
+  color: gray;
+  height: 35px;
+  width: 35px;
+}
+
+
+.footer__social-icon {
+  padding-top: 12px;
+  text-align: center;
+}
+
+.footer__social-icon ion-icon {
+  border-radius: 7px;
+  color: gray;
+}
+
+.footer__social-text {
+  font-size: 15px;
+  color: gray;
+}
+
+
+.footer__box-red ion-icon {
+  background-color: black;
+  transform: rotate(-12deg);
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  font-weight: 800;
+  color: #FFFFFF;
+  height: 30px;
+  width: 30px;
+  right: 5%;
+  top: 30%;
+}
