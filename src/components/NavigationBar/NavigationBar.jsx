@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavigationBar = () => (
   <article className="navigation__card">
     <h1 className="navigation__title">Restaurante</h1>
-    <nav>
+    <nav className="navigation__cont-ul">
       <ul className="navigation__ul">
         <li className="navigation__li">
           <Link className="navigation__text" to="/">HOME</Link>

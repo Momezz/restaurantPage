@@ -1,0 +1,39 @@
+.home__container{
+  background-color: #F9F9F9;
+  width: 100%;
+}
+
+.home__navigation{
+  width: 100%;
+}
+
+.home__container-map{
+  display: flex;
+  padding: 10px;
+  height: 250px;
+  width: 100%;
+}
+
+iframe{
+  border: 3px solid #FAD02C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px;
+}
+
+@media (min-width: 768px) {
+  .home__map-carousel{
+    display: grid;
+    justify-content: center;
+    background-color: black;
+    grid-template-columns: auto auto;
+  }
+
+  iframe{
+    width: 500px;
+    height: 265px;
+  }
+
+}
