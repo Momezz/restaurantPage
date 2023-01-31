@@ -1,77 +1,26 @@
-import { useState } from 'react';
+import BookingsForm from '../../components/BookingsForm/BookingsForm';
 import NavigatioBar from '../../components/NavigationBar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 import './styles.css';
+import OpeningOurs from '../../components/OpeningHours/OpeningOurs';
 
-const Bookings = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    date: '',
-    time: '',
-    party: '',
-  });
-
-  const handleInputChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-  };
-
-  return (
-    <>
-      <NavigatioBar />;
-      <form className="bookings-form__container" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          className="bookings-form__input"
-        /><br /><br />
-
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className="bookings-form__input"
-        /><br /><br />
-
-        <input
-          type="date"
-          id="date"
-          name="date"
-          value={formData.date}
-          onChange={handleInputChange}
-          className="bookings-form__input"
-        /><br /><br />
-
-        <input
-          type="time"
-          id="time"
-          name="time"
-          value={formData.time}
-          onChange={handleInputChange}
-          className="bookings-form__input"
-        /><br /><br />
-
-        <input className="bookings-form__btn" type="submit" value="Reservar" />
-      </form>
+const Bookings = () => (
+  <section className="bookings__container">
+    <nav className="bookings__navigation-bar">
+      <NavigatioBar />
+    </nav>
+    <section className="bookings__subcontainer">
+      <article className="bookings__bookings-form">
+        <BookingsForm />
+      </article>
+      <article className="bookings__bookings-form">
+        <OpeningOurs />
+      </article>
+    </section>
+    <article className="bookings__footer">
       <Footer />
-    </>
-
-  );
-};
+    </article>
+  </section>
+);
 
 export default Bookings;

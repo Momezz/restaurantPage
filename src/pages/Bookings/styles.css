@@ -1,28 +1,28 @@
-.bookings-form__container{
-  display: flex;
+.bookings__container{
   flex-direction: column;
   align-items: center;
-  background-color: #010101;
-  margin: auto;
-  width: 95%;
-  height: 100vh;
-  padding: 20px;
+  display: flex;
+  width: 100%;
 }
 
-.bookings-form__input {
-  background-color: #F9F9F9;
-  text-align: center;
-  height: 35px;
-  width: 95%;
-  border: none;
-  text-align: center;
+.bookings__navigation-bar{
+  width: 100%;
 }
 
-.bookings-form__btn{
-  background-color:  #FAD02C;;
+.bookings__bookings-form{
+  justify-content: center;
+  display: flex;
+  margin: 25px;
   width: 95%;
-  height: 40px;
-  font-size: 22PX;
-  font-weight: 700;
-  color: #F9F9F9;
+}
+
+.bookings__footer{
+  width: 100%;
+}
+
+@media(min-width: 768px){
+  .bookings__subcontainer{
+    align-items: flex-end;
+    display: flex;
+  }
 }
