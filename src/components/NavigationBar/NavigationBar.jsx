@@ -6,15 +6,15 @@ const NavigationBar = () => (
     <h1 className="navigation__title">Restaurante</h1>
     <nav className="navigation__cont-ul">
       <ul className="navigation__ul">
-        <li className="navigation__li">
+        <div className="navigation__li">
           <Link className="navigation__text" to="/">HOME</Link>
-        </li>
-        <li className="navigation__li">
-          <Link className="navigation__text" to="/">ABOUT</Link>
-        </li>
-        <li className="navigation__li">
-          <Link className="navigation__text" to="/">MENU</Link>
-        </li>
+        </div>
+        <div className="navigation__li">
+          <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
+        </div>
+        <div className="navigation__li">
+          <Link className="navigation__text" to="/menu">MENU</Link>
+        </div>
       </ul>
     </nav>
   </article>

@@ -1,0 +1,11 @@
+.opening-ours__container{
+  border: solid 5px  #FAD02C;;
+  font-family: 'Kalam', cursive;
+  border-radius: 45px;
+  text-align: center;
+  line-height: 30px;
+  color: #FAD02C;
+  font-size: 28px;
+  height: 350px;
+  width: 450px;
+}

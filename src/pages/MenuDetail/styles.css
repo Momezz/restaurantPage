@@ -1,0 +1,68 @@
+.menu-detail__container{
+  background-color: #F9F9F9;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  padding: 15px;
+}
+
+.menu-detail__sub-cont{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.menu-detail__link{
+  background-color: #EDE8E4;
+  border-radius: 5PX;
+  height: 50px;
+  width: 100%;
+}
+
+ion-icon{
+  margin-left: 7px;
+  text-align: left;
+  color: #676767;
+  margin-top: 7px;
+}
+.menu-detail__img{
+  border-radius: 25px;
+  margin-top: 30px;
+  width: 95%;
+}
+
+.menu-detail__title{
+  text-align: left;
+  margin-top: 33px;
+  color: #FAD02C;
+  font-size: 35px;
+}
+
+.menu-detail__description{
+  color: #676767;
+  font-size: 21px;
+}
+
+.menu-detail__price{
+  background-color: #EDE8E4;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 30px;
+  font-size: 25px;
+  display: flex;
+  width: 110px;
+  height: 35px;
+}
+
+@media(min-width: 768px){
+  .menu-detail__sub-cont{
+    flex-direction: row;
+    display: flex;
+  }
+
+  .menu-details__desktop{
+    margin-left: 15px;
+  }
+}
