@@ -1,0 +1,24 @@
+.image-carousel__container{
+  background-color: black;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.image-carousel__images img{
+  height: 100%;
+  width: 100%;
+}
+
+.image-carousel__btn{
+  background-color: #EDE8E4;
+  height: 310px;
+}
+
+ion-icon{
+  background-color: #FAD02C;
+  font-size: 25px;
+}
+

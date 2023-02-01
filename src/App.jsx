@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import Home from './pages/Home/Home';
+import Menu from './pages/Menu/Menu';
+import MenuDetails from './pages/MenuDetail/MenuDetail';
+import Bookings from './pages/Bookings/Bookings';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+const App = () => {
+  useEffect(() => {
+    document.title = 'Restauran Page';
+  }, []);
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/menu" element={<Menu />} />
+      <Route path="/details" element={<MenuDetails />} />
+      <Route path="/bookings" element={<Bookings />} />
+    </Routes>
+
+  );
+};
 
 export default App;
