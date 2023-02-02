@@ -1,5 +1,6 @@
 import './styles.css';
 import { Link } from 'react-router-dom';
+import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => (
   <article className="navigation__card">
@@ -17,6 +18,7 @@ const NavigationBar = () => (
         </div>
       </ul>
     </nav>
+    <LoginIcon />
   </article>
 );
 
