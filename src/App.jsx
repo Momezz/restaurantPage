@@ -6,6 +6,7 @@ import MenuDetails from './pages/MenuDetail/MenuDetail';
 import Bookings from './pages/Bookings/Bookings';
 import FormLogin from './pages/FormLogin/FormLogin';
 import SignUp from './pages/SignUp/SignUp';
+import ManageContent from './pages/ManageContent/ManageContent';
 
 const App = () => {
   useEffect(() => {
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/login" element={<FormLogin />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/manage-conten" element={<ManageContent />} />
     </Routes>
 
   );

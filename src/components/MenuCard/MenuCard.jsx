@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 const MenuCard = () => (
@@ -35,6 +36,9 @@ const MenuCard = () => (
       </tr>
       <hr className="menu-card__hr" />
     </table>
+    <div className="menu-card__link-cont">
+      <Link className="menu-card__link" to="/manage-conten"><ion-icon name="restaurant-outline" /></Link>
+    </div>
   </article>
 );
 

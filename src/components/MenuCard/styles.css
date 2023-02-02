@@ -1,31 +1,32 @@
 .menu-card__container{
-  padding: 15px;
-  display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
+  display: flex;
+  padding: 15px;
 }
 
 .menu-card__table {
-  border-collapse: collapse;
   background-color: #010101;
-  width: 370px;
-  height: 350px;
-  font-size: 18px;
-  overflow: scroll;
+  border-collapse: collapse;
   position: relative;
+  overflow: scroll;
+  font-size: 18px;
+  height: 350px;
+  width: 370px;
 }
 
 .menu-card__tr{
-  display: flex;
   flex-direction: column;
+  display: flex;
 }
 
 .menu-card__td {
-  padding: 10px;
-  text-align: left;
-  top: -12px;
-  margin: 10px;
   color: #F9F9F9;
+  text-align: left;
+  padding: 10px;
+  margin: 10px;
+  top: -12px;
 }
 
 .menu-card__td-title{
@@ -37,11 +38,27 @@
 }
 
 .menu-card__hr{
-  position: absolute;
-  width: 90%;
-  bottom: 12px;
-  margin-left: 15px;
   border-bottom: 5px dotted #F9F9F9;;
+  position: absolute;
+  margin-left: 15px;
+  bottom: 12px;
+  width: 90%;
+}
+
+.menu-card__link-cont{
+  background-color: rgba(128, 128, 128, 0.651);
+  position: absolute;
+  border-radius: 50%;
+  bottom: 12px;
+  right: 12px;
+}
+
+.menu-card__link ion-icon{
+  background-color: rgba(128, 128, 128, 0.918);
+  border-radius: 50%;
+  padding: 13px;
+  height: 50px;
+  width: 50px;
 }
 
 @media (min-width: 768px){
