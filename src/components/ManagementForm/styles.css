@@ -1,0 +1,84 @@
+.management-form__container{
+  background-color: #67676783;
+  min-width: 300px;
+}
+
+.management-form__title{
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 35px;
+  padding: 12px;
+}
+
+.management-form__subcont{
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+}
+
+.management-form__input{
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #67676700;
+  border-top: 2px solid white;
+  text-align: center;
+  text-align: center;
+  font-size: 22px;
+  outline: none;
+  height: 40px;
+  width: 95%;
+}
+
+.management-form__textarea{
+  min-height: 100px;
+}
+
+.management-form__btn{
+  background-color: #fad12c8b;
+  color: #F9F9F9;
+  font-weight: 700;
+  font-size: 22PX;
+  height: 45px;
+  width: 95%;
+}
+
+.management-form__btn:hover{
+  background-color: #eacd59;
+}
+
+.management-form__image-text{
+  color: rgba(255, 255, 255, 0.826);
+  font-size: 27px;
+}
+
+.management-form__file{
+  position: relative;
+  overflow: hidden;
+}
+
+.management-form__file [type=file] {
+  position: absolute;
+  text-align: right;
+  cursor: inherit;
+  display: block;
+  height: 35px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.management-form__file {
+color: rgba(255, 255, 255, 0.826);
+background-color: #67676700;
+border-top: 2px solid white;
+padding-bottom: 35px;
+border-style: solid;
+width: 100%;
+}
+
+.management-form__file [type=file] {
+  cursor: pointer;
+}
