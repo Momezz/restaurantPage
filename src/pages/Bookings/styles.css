@@ -1,7 +1,15 @@
 .bookings__container{
+  background-image: url("http://www.solofondos.com/wp-content/uploads/2015/11/5B1.jpg");
+  font-family: 'Kalam', cursive;
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-direction: column;
   align-items: center;
-  display: flex;
+  display: flex;;
+  width: 100%;
+}
+
+.bookings__container img{
   width: 100%;
 }
 
@@ -13,7 +21,6 @@
   justify-content: center;
   display: flex;
   margin: 25px;
-  width: 95%;
 }
 
 .bookings__footer{

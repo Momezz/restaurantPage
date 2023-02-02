@@ -1,17 +1,17 @@
-.bookings-form__container{
+.login__container{
   background-color: #67676783;
   max-width: 600px;
 }
 
 
-.bookings-form__title{
+.login__title{
   text-align: center;
   color: #fad12c8b;
   font-size: 35px;
   padding: 12px;
 }
 
-.bookings-form__subcont{
+.login__subcont{
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
@@ -21,7 +21,7 @@
   display: flex;
 }
 
-.bookings-form__input{
+.login__input{
   color: rgba(255, 255, 255, 0.826);
   background-color: #67676700;
   border-top: 2px solid white;
@@ -33,7 +33,7 @@
   width: 95%;
 }
 
-.bookings-form__btn{
+.login__btn{
   background-color: #fad12c8b;
   color: #F9F9F9;
   font-weight: 700;
@@ -42,6 +42,6 @@
   width: 95%;
 }
 
-.bookings-form__btn:hover{
+.login__btn:hover{
   background-color: #eacd59;
 }

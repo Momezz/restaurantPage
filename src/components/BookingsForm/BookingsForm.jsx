@@ -1,42 +1,29 @@
 import './styles.css';
-import { useState } from 'react';
+import useForm from '../../hooks/useForm';
 
 const BookingsForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    numberpoeple: 0,
-    date: '',
-    time: '',
-  });
+  const { form, handleChange } = useForm({});
 
-  const handleInputChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
+    try {
+      console.log(form);
+    } catch (error) {
+      throw new Error(error);
+    }
   };
-
   return (
     <article className="bookings-form__container">
-      <h1 className="bookings-form__title">Reserva</h1>
-      <p className="bookings-form__paragraph">
-        All that remains is to reserve your table.
-        You and your friends are welcome at Restaurant.
-      </p>
+      <h2 className="bookings-form__title">Hello, Sign in</h2>
       <form className="bookings-form__subcont" onSubmit={handleSubmit}>
         <input
           type="text"
           id="name"
           name="name"
           placeholder="name"
-          value={formData.name}
-          onChange={handleInputChange}
+          onChange={handleChange}
           className="bookings-form__input"
+          required
         /><br /><br />
 
         <input
@@ -44,29 +31,28 @@ const BookingsForm = () => {
           id="number-poeple"
           name="numberpoeple"
           placeholder="Number of people"
-          value={formData.number}
-          onChange={handleInputChange}
+          onChange={handleChange}
           className="bookings-form__input"
+          required
         /><br /><br />
 
         <input
           type="date"
           id="date"
           name="date"
-          value={formData.date}
-          onChange={handleInputChange}
+          onChange={handleChange}
           className="bookings-form__input"
+          required
         /><br /><br />
 
         <input
           type="time"
           id="time"
           name="time"
-          value={formData.time}
-          onChange={handleInputChange}
+          onChange={handleChange}
           className="bookings-form__input"
+          required
         /><br /><br />
-
         <input className="bookings-form__btn" type="submit" value="Reservar" />
       </form>
     </article>

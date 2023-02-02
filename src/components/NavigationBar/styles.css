@@ -4,7 +4,7 @@
   font-family: 'Kalam', cursive;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 550px;
+  height: 650px;
   width: 100%;
 }
 
@@ -56,7 +56,7 @@
 
 @media (min-width: 768px) {
   .navigation__card{
-    height: 400px;
+    height: 450px;
   }
 
   .navigation__title{
