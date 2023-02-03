@@ -11,13 +11,13 @@ const ImageContainer = () => {
     dispatch(getMenus());
   }, []);
   return (
-    menus.map((menu) => (
-      <section key={menu._id} className="image-container__container">
-        <div className="image-container__container">
+    <div className="image-container__container">
+      {
+        menus.map((menu) => (
           <HomeDishes menu={menu} />
-        </div>
-      </section>
-    ))
+        ))
+      }
+    </div>
   );
 };
 export default ImageContainer;
