@@ -4,3 +4,21 @@
   background-size: cover;
   width: 100%;
 }
+
+.menu-page__nav{
+  margin-bottom: 25px;
+}
+
+.menu-page__menu-card{
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  margin: 30px;
+  padding: 0;
+}
+
+.menu-page__footer{
+  margin-top: 25px;
+}

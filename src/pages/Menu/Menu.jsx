@@ -5,9 +5,15 @@ import MenuCard from '../../components/MenuCard/MenuCard';
 
 const Menu = () => (
   <section className="menu-page__container">
-    <NavigationBar />
-    <MenuCard />
-    <Footer />
+    <nav className="menu-page__nav">
+      <NavigationBar />
+    </nav>
+    <article className="menu-page__menu-card">
+      <MenuCard />
+    </article>
+    <footer className="menu-page__footer">
+      <Footer />
+    </footer>
   </section>
 );
 

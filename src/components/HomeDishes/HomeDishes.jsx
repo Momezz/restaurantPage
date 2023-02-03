@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 
-const HomeDiches = () => {
+const HomeDishes = ({ menu }) => {
   const [display, setDisplay] = useState(false);
   const handleSetTrue = () => {
     setDisplay(true);
@@ -18,12 +19,15 @@ const HomeDiches = () => {
     >
       <img className="home-dishes__img" src="https://tse4.mm.bing.net/th?id=OIP.qxeWJ8vokM7ra-E6vSjTngHaFZ&pid=Api&P=0" alt="Imagen" />
       <div className={display ? 'home-dishes__text' : 'home-dishes__none'}>
-        <h2 className="home-dishes__title">title</h2>
-        <p className="home-dishes__paragraph">Aqui descripcion</p>
-        <span className="home-dishes__price">$35.000</span>
+        <h2 className="home-dishes__title">{menu.name}</h2>
+        <p className="home-dishes__paragraph">{menu.description}</p>
+        <span className="home-dishes__price">{menu.price}</span>
       </div>
     </div>
   );
 };
+HomeDishes.propTypes = {
+  menu: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+};
 
-export default HomeDiches;
+export default HomeDishes;

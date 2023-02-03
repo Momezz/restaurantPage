@@ -1,7 +1,7 @@
 .image-container__container{
-  width: 100vw;
-  display: grid;
   grid-template-columns: auto auto;
+  display: grid;
+  width: 100vw;
 }
 
 @media (min-width: 940px) {

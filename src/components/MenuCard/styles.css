@@ -1,19 +1,18 @@
 .menu-card__container{
   flex-direction: column;
-  position: relative;
   align-items: center;
+  position: relative;
   display: flex;
   padding: 15px;
+  width: 350px;
 }
 
 .menu-card__table {
   background-color: #010101;
-  border-collapse: collapse;
-  position: relative;
-  overflow: scroll;
   font-size: 18px;
-  height: 350px;
-  width: 370px;
+  margin: 10px;
+  height: 360px;
+  width: 350px;
 }
 
 .menu-card__tr{
@@ -40,8 +39,8 @@
 .menu-card__hr{
   border-bottom: 5px dotted #F9F9F9;;
   position: absolute;
-  margin-left: 15px;
-  bottom: 12px;
+  margin-left: 3px;
+  bottom: 19px;
   width: 90%;
 }
 
@@ -49,8 +48,8 @@
   background-color: rgba(128, 128, 128, 0.651);
   position: absolute;
   border-radius: 50%;
-  bottom: 12px;
-  right: 12px;
+  bottom: 22px;
+  right: 20px;
 }
 
 .menu-card__link ion-icon{
