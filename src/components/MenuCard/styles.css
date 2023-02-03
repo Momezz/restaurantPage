@@ -1,16 +1,14 @@
 .menu-card__container{
   flex-direction: column;
-  position: relative;
   align-items: center;
+  position: relative;
   display: flex;
   padding: 15px;
+  width: 370px;
 }
 
 .menu-card__table {
   background-color: #010101;
-  border-collapse: collapse;
-  position: relative;
-  overflow: scroll;
   font-size: 18px;
   height: 350px;
   width: 370px;
@@ -49,8 +47,8 @@
   background-color: rgba(128, 128, 128, 0.651);
   position: absolute;
   border-radius: 50%;
-  bottom: 12px;
-  right: 12px;
+  bottom: 22px;
+  right: 20px;
 }
 
 .menu-card__link ion-icon{
