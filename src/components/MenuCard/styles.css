@@ -7,8 +7,12 @@
   width: 350px;
 }
 
+.menu-card__link-ver{
+
+}
+
 .menu-card__table {
-  background-color: #010101;
+  background-color: rgba(0, 0, 0, 0.589);
   font-size: 18px;
   margin: 10px;
   height: 360px;
@@ -32,6 +36,10 @@
   color: #FAD02C;
 }
 
+.menu-cards__img{
+  width: 40%;
+  margin-left: 15px;
+}
 .menu-card__tr {
   font-size: 18px;
 }

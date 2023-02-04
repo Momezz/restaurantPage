@@ -13,6 +13,12 @@ export const getMenus = createAsyncThunk('menus/getMenus', async () => {
   return data;
 });
 
+export const getMenuById = createAsyncThunk('menus/getMenuById', async (id) => {
+  const response = await fetch(`${BASE_URL}/api/menu/${id}`);
+  const data = await response.json();
+  return data;
+});
+
 export const createMenu = createAsyncThunk('menus/createMenu', async (menu) => {
   const options = {
     method: 'POST',
