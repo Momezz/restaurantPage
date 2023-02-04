@@ -22,7 +22,7 @@ export const createMenu = createAsyncThunk('menus/createMenu', async (menu) => {
     body: JSON.stringify(menu),
   };
 
-  const response = await fetch(`${BASE_URL}/api/menus`, options);
+  const response = await fetch(`${BASE_URL}/api/menu/`, options);
   const data = await response.json();
   return data;
 });

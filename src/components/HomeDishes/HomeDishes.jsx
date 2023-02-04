@@ -17,7 +17,7 @@ const HomeDishes = ({ menu }) => {
       onMouseEnter={handleSetTrue}
       onMouseLeave={handleSetFalse}
     >
-      <img className="home-dishes__img" src="https://tse4.mm.bing.net/th?id=OIP.qxeWJ8vokM7ra-E6vSjTngHaFZ&pid=Api&P=0" alt="Imagen" />
+      <img className="home-dishes__img" src={menu.image} alt="Imagen" />
       <div className={display ? 'home-dishes__text' : 'home-dishes__none'}>
         <h2 className="home-dishes__title">{menu.name}</h2>
         <p className="home-dishes__paragraph">{menu.description}</p>
@@ -27,7 +27,7 @@ const HomeDishes = ({ menu }) => {
   );
 };
 HomeDishes.propTypes = {
-  menu: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  menu: PropTypes.objectOf(PropTypes.objectOf).isRequired,
 };
 
 export default HomeDishes;
