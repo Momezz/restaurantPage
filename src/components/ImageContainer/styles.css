@@ -1,7 +1,29 @@
 .image-container__container{
-  grid-template-columns: auto auto;
-  display: grid;
-  width: 100vw;
+  background-image: url("http://www.solofondos.com/wp-content/uploads/2015/11/5B1.jpg");
+  font-family: 'Kalam', cursive;
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.image-container__title{
+  background-color: black;
+  margin-bottom: 5px;
+  text-align: center;
+  min-height: 65px;
+  color: #FAD02C;
+  font-size: 50px;
+  margin-top: 5px;
+}
+
+.image-container__li{
+  list-style: none;
 }
 
 @media (min-width: 940px) {
