@@ -14,9 +14,9 @@ const App = () => {
   }, []);
   return (
     <Routes>
+      <Route path="/details/:id" element={<MenuDetails />} />
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<Menu />} />
-      <Route path="/details" element={<MenuDetails />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/login" element={<FormLogin />} />
       <Route path="/sign-up" element={<SignUp />} />

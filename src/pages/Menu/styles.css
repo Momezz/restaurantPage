@@ -5,11 +5,7 @@
   width: 100%;
 }
 
-.menu-page__nav{
-  margin-bottom: 25px;
-}
-
-.menu-page__menu-card{
+.menu-page__products{
   justify-content: center;
   flex-direction: row;
   align-items: center;
@@ -17,6 +13,29 @@
   display: flex;
   margin: 30px;
   padding: 0;
+}
+
+.menu-page__nav{
+  margin-bottom: 25px;
+}
+
+.menu-page__select{
+  background-color: black;
+  font-size: 22px;
+  color: white;
+  width: 300px;
+  padding: 5px;
+  border: none;
+  height: 50px;
+  margin: 5px;
+}
+
+.menu-page__title{
+  text-align: center;
+  margin-top: 10px;
+  color: #FAD02C;
+  font-size: 55px;
+  display: block;
 }
 
 .menu-page__footer{

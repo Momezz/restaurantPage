@@ -8,11 +8,21 @@
 }
 
 .menu-card__table {
-  background-color: #010101;
+  background-color: rgba(0, 0, 0, 0.589);
   font-size: 18px;
   margin: 10px;
   height: 360px;
   width: 350px;
+}
+
+.menu-card__see-detail{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15%;
+  margin-top: 22px;
+  margin-bottom: -40px;
+  color: #F9F9F9;
+  font-size: 25px;
 }
 
 .menu-card__tr{
@@ -32,6 +42,10 @@
   color: #FAD02C;
 }
 
+.menu-cards__img{
+  width: 40%;
+  margin-left: 15px;
+}
 .menu-card__tr {
   font-size: 18px;
 }
