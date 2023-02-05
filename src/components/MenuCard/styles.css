@@ -7,16 +7,22 @@
   width: 350px;
 }
 
-.menu-card__link-ver{
-
-}
-
 .menu-card__table {
   background-color: rgba(0, 0, 0, 0.589);
   font-size: 18px;
   margin: 10px;
   height: 360px;
   width: 350px;
+}
+
+.menu-card__see-detail{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15%;
+  margin-top: 22px;
+  margin-bottom: -40px;
+  color: #F9F9F9;
+  font-size: 25px;
 }
 
 .menu-card__tr{

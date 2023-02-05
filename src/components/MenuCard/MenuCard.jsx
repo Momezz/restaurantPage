@@ -5,9 +5,9 @@ import './styles.css';
 const MenuCard = ({ product }) => (
   <article className="menu-card__container" key={product._id}>
     <div className="menu-card__table">
-      <Link className="menu-card__link-ver" to={`/details/${product.id}`}>Ver</Link>
       <div className="menu-card__tr">
         <h2 className="menu-card__td-title menu-card__td">{product.name}</h2>
+        <Link className="menu-card__see-detail" to={`/details/${product._id}`}>See More</Link>
         <img className="menu-cards__img" src={product.image} alt="Imagen" />
         <p className="menu-card__td">{product.description}</p>
         <span className="menu-card__td">{product.price}</span>
