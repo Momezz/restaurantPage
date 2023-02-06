@@ -1,0 +1,42 @@
+.confirm-delete__container{
+  background-color: #ede8e4de;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  height: 320PX;
+  width: 320px;
+}
+
+.confirm-delete__container__none{
+  display: none;
+}
+
+.confirm-delete__paragraph{
+  text-align: center;
+  color: #010101;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.confirm-delete__cont-botton{
+  background-color: #6767677c;
+  text-align: center;
+  font-size: 18px;
+  display: block;
+  height: 30px;
+  width: 120px;
+  border: none;
+}
+
+.confirm-delete__cont-botton:hover{
+  background-color: #676767;
+}
+
+.confirm-delete__cont-bottons{
+  justify-content: space-between;
+  display: flex;
+  width: 90%;
+}
+
+

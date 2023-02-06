@@ -1,30 +1,35 @@
 import './styles.css';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import useForm from '../../hooks/useForm';
 import { createImage } from '../../features/uploads/uploadsSlice';
-import { createMenu } from '../../features/menus/menusSlice';
+import { createMenu, updateMenu } from '../../features/menus/menusSlice';
 
 const ManagementForm = () => {
+  const { id } = useParams();
   const { uploads } = useSelector((state) => state.upload);
   const { form, handleChange } = useForm({});
   const [file, setFile] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => { }, [uploads]);
 
   const handleChangeImage = ({ target }) => {
     const { files } = target;
     const image = files[0];
     setFile(image);
   };
-  useEffect(() => { }, [uploads]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (uploads) {
+      if (id) {
+        dispatch(updateMenu({ ...form, _id: id }));
+      }
+      if (uploads && id === undefined) {
         dispatch(createMenu({ ...form, image: uploads }));
       }
-      document.getElementById('form-menuMain');
     } catch (error) {
       throw new Error(error);
     }
@@ -77,7 +82,6 @@ const ManagementForm = () => {
           </figure>
         ) : null}
       </div>
-
       <article className="management-form__container">
         <h2 className="management-form__title">Hello</h2>
         <form className="management-form__subcont" onSubmit={handleSubmit}>
@@ -90,7 +94,6 @@ const ManagementForm = () => {
             <option className="management-form__option" value="drinks">Drinks</option>
           </select>
           <br /><br />
-
           <input
             type="text"
             id="name"
@@ -100,7 +103,6 @@ const ManagementForm = () => {
             className="management-form__input"
             required
           /><br /><br />
-
           <textarea
             type="text"
             id="description"
@@ -110,7 +112,6 @@ const ManagementForm = () => {
             className="management-form__input management-form__textarea"
             required
           /><br /><br />
-
           <input
             type="number"
             id="price"
@@ -120,7 +121,6 @@ const ManagementForm = () => {
             className="management-form__input"
             required
           /><br /><br />
-
           <input className="management-form__btn" type="submit" value="Done" />
         </form>
       </article>

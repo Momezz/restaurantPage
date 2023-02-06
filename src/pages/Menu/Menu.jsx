@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import './styles.css';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { getMenus } from '../../features/menus/menusSlice';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 import MenuCard from '../../components/MenuCard/MenuCard';
-import { getMenus } from '../../features/menus/menusSlice';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,6 @@ const Menu = () => {
     dispatch(getMenus());
     setCategory(category);
   }, []);
-
   function handleCategoryChange(event) {
     setCategory(event.target.value);
   }
@@ -25,7 +25,7 @@ const Menu = () => {
       <nav className="menu-page__nav">
         <NavigationBar />
       </nav>
-      <article>
+      <article className="menu-page__sub-cont">
         <select
           value={category}
           onChange={handleCategoryChange}
@@ -45,6 +45,9 @@ const Menu = () => {
             </li>
           ))}
         </ul>
+        <div className="menu-page__link-cont">
+          <Link className="menu-page__link" to="/manage-conten"><ion-icon name="restaurant-outline" /></Link>
+        </div>
       </article>
       <footer className="menu-page__footer">
         <Footer />
