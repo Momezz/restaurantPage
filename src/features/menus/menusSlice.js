@@ -38,7 +38,7 @@ export const deleteMenu = createAsyncThunk('menus/deleteMenu', async (id) => {
     method: 'DELETE',
   };
 
-  await fetch(`${BASE_URL}/api/menus/${id}`, options);
+  await fetch(`${BASE_URL}/api/menu/${id}`, options);
   return id;
 });
 
@@ -51,7 +51,7 @@ export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu) => {
     body: JSON.stringify(menu),
   };
 
-  const response = await fetch(`${BASE_URL}/api/menus/${menu._id}`, options);
+  const response = await fetch(`${BASE_URL}/api/menu/${menu._id}`, options);
   const data = await response.json();
   return data;
 });

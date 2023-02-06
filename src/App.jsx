@@ -21,6 +21,7 @@ const App = () => {
       <Route path="/login" element={<FormLogin />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/manage-conten" element={<ManageContent />} />
+      <Route path="/manage-conten/:id" element={<ManageContent />} />
     </Routes>
 
   );

@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.menu-page__sub-cont{
+  position: relative;
+}
+
 .menu-page__products{
   justify-content: center;
   flex-direction: row;
@@ -40,4 +44,20 @@
 
 .menu-page__footer{
   margin-top: 25px;
+}
+
+.menu-page__link-cont{
+  background-color: rgba(128, 128, 128, 0.651);
+  position: absolute;
+  border-radius: 50%;
+  bottom: 22px;
+  right: 20px;
+}
+
+.menu-page__link ion-icon{
+  background-color: rgba(128, 128, 128, 0.918);
+  border-radius: 50%;
+  padding: 13px;
+  height: 50px;
+  width: 50px;
 }
