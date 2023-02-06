@@ -1,13 +1,27 @@
 import './styles.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import useForm from '../../hooks/useForm';
+import { getBookings, createBooking } from '../../features/bookings/bookings';
 
 const BookingsForm = () => {
   const { form, handleChange } = useForm({});
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getBookings());
+  }, []);
+
+  const reserva = {
+    name: form.name,
+    reservationDate: new Date(form.reservationDate),
+    reservationTime: form.reservationTime,
+    numberPeople: form.numberPeople,
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(form);
+      dispatch(createBooking(reserva));
     } catch (error) {
       throw new Error(error);
     }
@@ -29,7 +43,7 @@ const BookingsForm = () => {
         <input
           type="number"
           id="number-poeple"
-          name="numberpoeple"
+          name="numberPeople"
           placeholder="Number of people"
           onChange={handleChange}
           className="bookings-form__input"
@@ -39,7 +53,7 @@ const BookingsForm = () => {
         <input
           type="date"
           id="date"
-          name="date"
+          name="reservationDate"
           onChange={handleChange}
           className="bookings-form__input"
           required
@@ -48,7 +62,7 @@ const BookingsForm = () => {
         <input
           type="time"
           id="time"
-          name="time"
+          name="reservationTime"
           onChange={handleChange}
           className="bookings-form__input"
           required
