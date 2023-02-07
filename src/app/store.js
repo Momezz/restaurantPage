@@ -3,6 +3,7 @@ import userReducer from '../features/users/usersSlice';
 import uploadsReducer from '../features/uploads/uploadsSlice';
 import menuReducer from '../features/menus/menusSlice';
 import bookingReducer from '../features/bookings/bookings';
+import shoppingReducer from '../features/shopping/shoppingSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     menus: menuReducer,
     upload: uploadsReducer,
     bookings: bookingReducer,
+    shopping: shoppingReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

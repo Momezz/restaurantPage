@@ -1,5 +1,6 @@
 import './styles.css';
 import { Link } from 'react-router-dom';
+import CartCounter from '../CartCounter/CartCounter';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => (
@@ -18,6 +19,9 @@ const NavigationBar = () => (
         </div>
       </ul>
     </nav>
+    <div className="navigation__count-items">
+      <CartCounter />
+    </div>
     <LoginIcon />
   </article>
 );

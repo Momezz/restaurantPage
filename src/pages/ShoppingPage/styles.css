@@ -1,0 +1,27 @@
+.shopping-page__container{
+  background-image: url("http://www.solofondos.com/wp-content/uploads/2015/11/5B1.jpg");
+  font-family: 'Kalam', cursive;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.shoppin-page__items{
+  display: flex;
+  line-height: 15px;
+  justify-content: space-between;
+  margin-right: 70px;
+}
+
+.shopping-page__key{
+  text-align: left;
+}
+
+.shopping-cart-items{
+  background-color: #EDE8E4;
+  color: #676767;
+  width: 90%;
+}
