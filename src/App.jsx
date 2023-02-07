@@ -7,6 +7,7 @@ import Bookings from './pages/Bookings/Bookings';
 import FormLogin from './pages/FormLogin/FormLogin';
 import SignUp from './pages/SignUp/SignUp';
 import ManageContent from './pages/ManageContent/ManageContent';
+import ShoppingPage from './pages/ShoppingPage/ShoppingPage';
 
 const App = () => {
   useEffect(() => {
@@ -22,8 +23,8 @@ const App = () => {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/manage-conten" element={<ManageContent />} />
       <Route path="/manage-conten/:id" element={<ManageContent />} />
+      <Route path="/cart" element={<ShoppingPage />} />
     </Routes>
-
   );
 };
 
