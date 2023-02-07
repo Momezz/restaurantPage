@@ -12,8 +12,8 @@
 
 .menu-card__confir-delete{
   position: absolute;
-  bottom: 50px;
   right: -165px;
+  bottom: 50px;
 }
 
 .menu-card__shopping-cart{
@@ -22,23 +22,23 @@
   position: absolute;
   bottom: 350px;
   height: 50px;
-  left: 140px;
+  left: 130px;
   width: 50px;
 }
 
 .menu-card__shopping-cart:hover{
-  width: 60px;
   height: 60px;
+  width: 60px;
 }
 
 .menu-card__shopping-cart ion-icon{
   background-color: black;
   border-radius: 50%;
   font-size: 60px;
+  margin: 0 auto;
   color: white;
   height: 80%;
   width: 90%;
-  margin: 0 auto;
 }
 
 .menu-card__delete-icon{
@@ -50,7 +50,7 @@
   border: none;
 }
 
-.menu-card__table {
+.menu-card__table{
   background-color: rgba(0, 0, 0, 0.589);
   position: relative;
   font-size: 18px;

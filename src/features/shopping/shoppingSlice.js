@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const shoppingSlice = createSlice({
@@ -10,9 +11,8 @@ const shoppingSlice = createSlice({
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
-      // eslint-disable-next-line no-param-reassign
       state.items = state.items.filter(
-        (item) => item.id !== action.payload.id,
+        (item) => item.id !== action.payload,
       );
     },
   },

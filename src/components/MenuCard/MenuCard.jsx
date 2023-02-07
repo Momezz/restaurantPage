@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -6,7 +5,6 @@ import PropTypes from 'prop-types';
 import { addItem } from '../../features/shopping/shoppingSlice';
 import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
 import './styles.css';
-// eslint-disable-next-line import/no-named-as-default
 
 const MenuCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -16,6 +14,7 @@ const MenuCard = ({ product }) => {
   };
 
   const item = {
+    id: product._id,
     name: product.name,
     price: product.price,
   };
@@ -25,7 +24,12 @@ const MenuCard = ({ product }) => {
   return (
     <article className="menu-card__container" key={product._id}>
       <div className="menu-card__table">
-        <button onClick={handleDelet} className="menu-card__delete-icon" type="button"><ion-icon name="trash-outline" /></button>
+        <button
+          onClick={handleDelet}
+          className="menu-card__delete-icon"
+          type="button"
+        ><ion-icon name="trash-outline" />
+        </button>
         <div className="menu-card__tr">
           <h2 className="menu-card__td-title menu-card__td">{product.name}</h2>
           <Link className="menu-card__see-detail" to={`/details/${product._id}`}>See More</Link>
@@ -35,7 +39,12 @@ const MenuCard = ({ product }) => {
         <hr className="menu-card__hr" />
       </div>
       <div className="menu-card__link-cont">
-        <Link className="menu-card__link" to={`/manage-conten/${product._id}`}><ion-icon name="restaurant-outline" /></Link>
+        <Link
+          className="menu-card__link"
+          to={`/manage-conten/${product._id}`}
+        >
+          <ion-icon name="restaurant-outline" />
+        </Link>
       </div>
       <div className="menu-card__delet-component">
         {
@@ -46,7 +55,13 @@ const MenuCard = ({ product }) => {
           )
         }
         <div className="menu-card__shopping">
-          <button className="menu-card__shopping-cart" onClick={handleAdd} type="button"><ion-icon name="cart-outline" /></button>
+          <button
+            className="menu-card__shopping-cart"
+            onClick={handleAdd}
+            type="button"
+          >
+            <ion-icon name="cart-outline" />
+          </button>
         </div>
       </div>
     </article>
