@@ -6,9 +6,12 @@ import { getMenus } from '../../features/menus/menusSlice';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 import MenuCard from '../../components/MenuCard/MenuCard';
+import { convert } from '../../services/auth';
 
 const Menu = () => {
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.login.user.user);
+
   const { menus } = useSelector((state) => state.menus);
   const [category, setCategory] = useState('meats');
   useEffect(() => {
@@ -19,6 +22,7 @@ const Menu = () => {
     setCategory(event.target.value);
   }
 
+  const role = convert(userLogin);
   const filteredProducts = menus.filter((product) => product.category === category);
   return (
     <section className="menu-page__container">
@@ -47,6 +51,7 @@ const Menu = () => {
         </ul>
         <div className="menu-page__link-cont">
           <Link className="menu-page__link" to="/manage-conten"><ion-icon name="restaurant-outline" /></Link>
+          <div className={!role ? 'menu-page__link-layer' : null}> </div>
         </div>
       </article>
       <footer className="menu-page__footer">

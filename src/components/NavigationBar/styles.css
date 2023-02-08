@@ -2,9 +2,9 @@
 .navigation__card{
   background-image: url("https://tse3.mm.bing.net/th?id=OIP.LR8kcvBaniQxMF9dQ70DQwHaEK&pid=Api&P=0");
   font-family: 'Kalam', cursive;
-  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   height: 700px;
   width: 100%;
 }
@@ -13,7 +13,11 @@
   position: absolute;
   bottom: -60px;
   right: 0;
+}
 
+.navigation__validations{
+  background-color: #010101;
+  margin-bottom: 10px;
 }
 
 .navigation__title{
@@ -62,6 +66,24 @@
   font-weight: 600;
 }
 
+.navigation__btn-logout{
+  background-color: #010101;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  bottom: 15px;
+  border: none;
+  right: 40%;
+}
+
+.navigation__btn-logout ion-icon{
+  background-color: #010101;
+  color: #FAD02C;
+  font-size: 15px;
+  border: none;
+}
+
 @media (min-width: 768px) {
   .navigation__card{
     height: 450px;
@@ -77,5 +99,14 @@
     flex-direction: row;
     display: flex;
     height: 80px;
+  }
+
+  .navigation__btn-logout{
+    bottom: -55px;
+    right: 45%;
+  }
+
+  .navigation__count-items{
+    bottom: -20px;
   }
 }

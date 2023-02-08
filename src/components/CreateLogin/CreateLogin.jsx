@@ -25,7 +25,6 @@ const CreateLogin = () => {
           onChange={handleChange}
           required
         /><br /><br />
-
         <input
           type="email"
           id="email"
@@ -35,7 +34,6 @@ const CreateLogin = () => {
           onChange={handleChange}
           required
         /><br /><br />
-
         <input
           type="text"
           id="password"
@@ -45,7 +43,6 @@ const CreateLogin = () => {
           onChange={handleChange}
           required
         /><br /><br />
-
         <input
           type="phone"
           id="phone"
@@ -55,7 +52,6 @@ const CreateLogin = () => {
           onChange={handleChange}
           required
         /><br /><br />
-
         <input className="create-login__btn" type="submit" value="Sign up" />
       </form>
     </article>

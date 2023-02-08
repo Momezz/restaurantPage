@@ -12,7 +12,7 @@ const BookingsForm = () => {
     dispatch(getBookings());
   }, []);
 
-  const reserva = {
+  const reservationData = {
     name: form.name,
     reservationDate: new Date(form.reservationDate),
     reservationTime: form.reservationTime,
@@ -21,7 +21,7 @@ const BookingsForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      dispatch(createBooking(reserva));
+      dispatch(createBooking(reservationData));
     } catch (error) {
       throw new Error(error);
     }
@@ -39,7 +39,6 @@ const BookingsForm = () => {
           className="bookings-form__input"
           required
         /><br /><br />
-
         <input
           type="number"
           id="number-poeple"
@@ -49,7 +48,6 @@ const BookingsForm = () => {
           className="bookings-form__input"
           required
         /><br /><br />
-
         <input
           type="date"
           id="date"
@@ -58,7 +56,6 @@ const BookingsForm = () => {
           className="bookings-form__input"
           required
         /><br /><br />
-
         <input
           type="time"
           id="time"

@@ -45,6 +45,10 @@
   background-color: rgba(0, 0, 0, 0.589);
 }
 
+.menu-card__delete-none{
+  display: none;
+}
+
 .menu-card__delete-icon ion-icon{
   background-color: rgba(0, 0, 0, 0.589);
   border: none;
@@ -106,6 +110,15 @@
   border-radius: 50%;
   bottom: 60px;
   right: 20px;
+}
+
+.menu-card__link-layer{
+  background-color: transparent;
+  position: absolute;
+  height: 80px;
+  bottom: 0px;
+  width: 80px;
+  right: 0px;
 }
 
 .menu-card__link ion-icon{

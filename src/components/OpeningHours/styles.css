@@ -3,9 +3,8 @@
   font-family: 'Kalam', cursive;
   border-radius: 45px;
   text-align: center;
-  line-height: 30px;
+  line-height: 40px;
   color: #FAD02C;
   font-size: 28px;
-  height: 350px;
-  width: 450px;
+  max-width: 450px;
 }

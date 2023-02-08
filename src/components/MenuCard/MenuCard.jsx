@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { convert } from '../../services/auth';
 import { addItem } from '../../features/shopping/shoppingSlice';
 import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
 import './styles.css';
 
 const MenuCard = ({ product }) => {
+  const userLogin = useSelector((state) => state.login.user.user);
   const dispatch = useDispatch();
   const [deleteProduct, setDeleteProduct] = useState(0);
   const handleDelet = () => {
     setDeleteProduct(product._id);
   };
 
+  const role = convert(userLogin);
   const item = {
     id: product._id,
     name: product.name,
@@ -26,7 +29,7 @@ const MenuCard = ({ product }) => {
       <div className="menu-card__table">
         <button
           onClick={handleDelet}
-          className="menu-card__delete-icon"
+          className={role ? 'menu-card__delete-icon' : 'menu-card__delete-none'}
           type="button"
         ><ion-icon name="trash-outline" />
         </button>
@@ -45,6 +48,7 @@ const MenuCard = ({ product }) => {
         >
           <ion-icon name="restaurant-outline" />
         </Link>
+        <div className={!role ? 'menu-card__link-layer' : null}> </div>
       </div>
       <div className="menu-card__delet-component">
         {
