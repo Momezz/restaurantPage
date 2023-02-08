@@ -12,23 +12,28 @@ export const login = createAsyncThunk(
       },
       body: JSON.stringify(user),
     };
-
     const res = await fetch(`${BASE_URL}/auth/local/login`, options);
     const result = await res.json();
-    // if (result) {
-    //  localStorage.setItem('token', result.token);
-    //  localStorage.setItem('role', JSON.stringify(result.user.role));
-    // }
     return result;
   },
 );
 
-export const validateUserMailToken = async (token) => {
-  const response = await fetch(`${BASE_URL}/auth/local/activate/${token}`);
-  const data = response.json();
+export const createUser = createAsyncThunk(
+  'users/createUser',
+  async (user) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    };
 
-  return data;
-};
+    const res = await fetch(`${BASE_URL}/api/users`, options);
+    const result = await res.json();
+    return result;
+  },
+);
 
 export const convert = (value) => {
   if (value === undefined || value === 'USER' || value === '') {
