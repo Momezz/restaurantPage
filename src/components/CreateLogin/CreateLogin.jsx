@@ -1,13 +1,19 @@
 import './styles.css';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
+import { createUser } from '../../services/users';
 
 const CreateLogin = () => {
   const { form, handleChange } = useForm({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(form);
+      dispatch(createUser(form));
+      navigate('/login');
     } catch (error) {
       throw new Error(error);
     }

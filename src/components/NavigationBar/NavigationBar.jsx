@@ -1,12 +1,14 @@
 import './styles.css';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartCounter from '../CartCounter/CartCounter';
-import { login } from '../../services/auth';
+import { login, convert } from '../../services/auth';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
+  const userLogin = useSelector((state) => state.login.user.user);
   const dispatch = useDispatch();
+  const role = convert(userLogin);
   const handleLogout = () => {
     localStorage.clear();
     dispatch(login());
@@ -20,7 +22,11 @@ const NavigationBar = () => {
             <Link className="navigation__text" to="/">HOME</Link>
           </div>
           <div className="navigation__li">
-            <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
+            {
+              !role
+                ? <Link className="navigation__text" to="/login">BOOKINGS</Link>
+                : <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
+            }
           </div>
           <div className="navigation__li">
             <Link className="navigation__text" to="/menu">MENU</Link>
