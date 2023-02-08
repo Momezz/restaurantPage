@@ -7,6 +7,7 @@
 
 .menu-page__sub-cont{
   position: relative;
+  margin-top: 100px;
 }
 
 .menu-page__products{
@@ -60,4 +61,13 @@
   padding: 13px;
   height: 50px;
   width: 50px;
+}
+
+.menu-page__link-layer{
+  background-color: transparent;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  bottom: 0px;
+  right: 0px;
 }

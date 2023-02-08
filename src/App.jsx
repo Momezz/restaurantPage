@@ -24,6 +24,7 @@ const App = () => {
       <Route path="/manage-conten" element={<ManageContent />} />
       <Route path="/manage-conten/:id" element={<ManageContent />} />
       <Route path="/cart" element={<ShoppingPage />} />
+      <Route path="*" element={<h1>Error 404</h1>} />
     </Routes>
   );
 };
