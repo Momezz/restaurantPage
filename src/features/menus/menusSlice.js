@@ -5,6 +5,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const initialState = {
   menus: [],
+  menuDetail: {},
 };
 
 export const getMenus = createAsyncThunk('menus/getMenus', async () => {
@@ -64,7 +65,7 @@ const menusSlice = createSlice({
       state.menus = action.payload;
     });
     builder.addCase(createMenu.fulfilled, (state, action) => {
-      state.menus = action.payload;
+      state.menuDetail = action.payload;
     });
     builder.addCase(deleteMenu.fulfilled, (state, action) => {
       const { menus } = current(state);
