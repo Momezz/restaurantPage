@@ -6,9 +6,16 @@
   background-size: cover;
   flex-direction: column;
   align-items: center;
-  align-items: center;
   display: flex;
   width: 100%;
+}
+
+.shopping-cart__forms{
+  padding: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .shopping-page__nav{
@@ -84,9 +91,21 @@
   width: 70px;
 }
 
+.shopping-page__pay-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 @media(min-width: 768px){
   .shopping-cart-items{
     margin-bottom: 50px;
     padding-top: 50px;
+  }
+
+  .shopping-cart__forms{
+    flex-direction: row;
+    margin-top: 100px;
   }
 }

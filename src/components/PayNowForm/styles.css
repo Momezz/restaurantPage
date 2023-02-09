@@ -1,0 +1,82 @@
+.pay-now__container{
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #67676783;
+  font-family: 'Kalam', cursive;
+  flex-direction: column;
+  margin-bottom: 30px;
+  line-height: 12px;
+  max-width: 350px;
+  font-size: 25px;
+  padding: 15px;
+  width: 95%;
+}
+
+.pay-now__card-number{
+  margin-top: 12px;
+}
+
+.pay-now__name-card{
+ border: 1px solid rgba(255, 255, 255, 0.826);
+}
+
+.pay-now__center{
+  padding-top: 20px;
+}
+
+.pay-now__input{
+  padding-left: 9px;
+  outline: none;
+  height: 25px;
+  width: 100%;
+}
+
+.pay-now__cards{
+  border: 1px solid rgba(255, 255, 255, 0.826);
+  align-items: center;
+  margin-top: 5px;
+  display: flex;
+  height: 37px;
+}
+
+.pay-now__no-borde{
+  border: none;
+  height: 26px;
+}
+
+.pay-now__img{
+  height: 18px;
+  width: 20px;
+  margin: 2px;
+}
+
+.pay-now__cvv{
+  height: 20px;
+  width: 45px;
+}
+
+.pay-now__btn-cont{
+  justify-content: flex-end;
+  display: flex;
+}
+
+.pay-now__btn{
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #FAD02C;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 25px;
+  height: 35px;
+  border: none;
+  width: 100%;
+}
+
+.pay-now__btn:hover{
+  background-color: #FAD02C;
+  font-size: 25px;
+}
+
+.pay-now__cards{
+  margin-bottom: 12px;
+  padding-top: 14px;
+  padding: 4px;
+}
