@@ -14,7 +14,6 @@ const ManagementForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => { }, [uploads]);
-
   const handleChangeImage = ({ target }) => {
     const { files } = target;
     const image = files[0];
@@ -37,7 +36,6 @@ const ManagementForm = () => {
 
   const handleSubmitimage = async (event) => {
     event.preventDefault();
-
     if (file) {
       try {
         dispatch(createImage(file));
@@ -49,6 +47,7 @@ const ManagementForm = () => {
   const handleClick = () => {
     document.getElementById('form-menu').reset();
   };
+
   return (
     <section className="forms__container">
       <div className="form-menu__img-container">
@@ -86,7 +85,6 @@ const ManagementForm = () => {
         <h2 className="management-form__title">Hello</h2>
         <form className="management-form__subcont" onSubmit={handleSubmit}>
           <select onChange={handleChange} className="management-form__select" name="category">
-            <option className="management-form__option" value="entrees">Entrees</option>
             <option className="management-form__option" value="meats">Meats</option>
             <option className="management-form__option" value="soups">Soups</option>
             <option onChange={handleChange} className="management-form__option" value="pasta">Pasta</option>

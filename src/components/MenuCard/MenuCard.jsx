@@ -37,7 +37,7 @@ const MenuCard = ({ product }) => {
           <h2 className="menu-card__td-title menu-card__td">{product.name}</h2>
           <Link className="menu-card__see-detail" to={`/details/${product._id}`}>See More</Link>
           <img className="menu-cards__img" src={product.image} alt="Imagen" />
-          <span className="menu-card__td">{product.price}</span>
+          <span className="menu-card__td">$ {product.price}</span>
         </div>
         <hr className="menu-card__hr" />
       </div>
