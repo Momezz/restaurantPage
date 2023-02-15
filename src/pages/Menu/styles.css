@@ -43,6 +43,38 @@
   display: block;
 }
 
+.menu-page__btn-container{
+  flex-direction: column;
+  margin: 0 auto;
+  display: flex;
+  width: 250px;
+}
+
+.menu-page__btn-option{
+  background-color: #fad12c8b;
+  margin-bottom: 15px;
+  color: #F9F9F9;
+  font-weight: 700;
+  font-size: 22PX;
+  height: 45px;
+}
+
+.menu-page__btn-option:hover{
+  background-color: #eacd59;
+}
+
+.menu-page__btn-option:focus{
+  background-color: #eacd59;
+}
+
+.menu-page__title-none{
+  display: none;
+}
+
+.menu-page__title-height{
+  margin-bottom: 120px;
+}
+
 .menu-page__footer{
   margin-top: 25px;
 }
@@ -70,4 +102,16 @@
   width: 80px;
   bottom: 0px;
   right: 0px;
+}
+
+@media(min-width: 768px){
+  .menu-page__btn-container{
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .menu-page__btn-option{
+    margin: 15px;
+    width: 200px;
+  }
 }
