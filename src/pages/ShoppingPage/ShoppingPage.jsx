@@ -17,7 +17,6 @@ const ShoppingPage = () => {
   const handleEmpty = (id) => {
     dispatch(removeItem(id));
   };
-
   const totalPrice = items
     .filter((item) => item.price > 5)
     .reduce((acc, product) => acc + product.price, 0);
@@ -33,7 +32,8 @@ const ShoppingPage = () => {
             ? <h2 className="shoppin-page__empty">You still don&rsquo;t have products here</h2>
             : listItems.map((item) => (
               <li className="shoppin-page__items" key={item.id}>
-                <p className="shoppin-page__name"><span className="shopping-page__key">-</span>{item.name}</p>
+                <p className="shoppin-page__name">{item.repetNumber.length}&nbsp;</p>
+                <p className="shoppin-page__name">&nbsp;{item.name}</p>
                 <p className="shoppin-page__price"><span className="shopping-page__key">$</span>{item.price}</p>
                 <button
                   className="shopping-page__btn"
