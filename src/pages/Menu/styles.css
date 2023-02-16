@@ -24,17 +24,6 @@
   margin-bottom: 25px;
 }
 
-.menu-page__select{
-  background-color: black;
-  font-size: 22px;
-  color: white;
-  width: 250px;
-  padding: 5px;
-  border: none;
-  height: 50px;
-  margin: 5px;
-}
-
 .menu-page__title{
   text-align: center;
   margin-top: 10px;
@@ -44,6 +33,7 @@
 }
 
 .menu-page__btn-container{
+  justify-content: space-around;
   flex-direction: column;
   margin: 0 auto;
   display: flex;

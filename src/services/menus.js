@@ -48,7 +48,7 @@ export const addToCart = (cart) => cart.reduce((acc, obj) => {
   const repetNumber = cart.filter((item) => item.id === obj.id);
   const exist = acc.filter((item) => item.id === obj.id).length;
   if (!exist) {
-    return [...acc, { ...obj, price: obj.price * repetNumber.length }];
+    return [...acc, { ...obj, price: obj.price * repetNumber.length, repetNumber }];
   }
   return acc;
 }, []);
