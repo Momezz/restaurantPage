@@ -1,13 +1,14 @@
 import './styles.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { createUser } from '../../services/users';
 
 const CreateLogin = () => {
+  const [stateUser, setStateUser] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
     name: Yup
       .string()
@@ -41,8 +42,10 @@ const CreateLogin = () => {
     validationSchema,
     onSubmit: (values) => {
       try {
-        dispatch(createUser(values));
-        navigate('/login');
+        if (values) {
+          dispatch(createUser(values));
+          setStateUser(true);
+        }
       } catch (error) {
         throw new Error(error);
       }
@@ -52,6 +55,16 @@ const CreateLogin = () => {
   return (
     <article className="create-login__container">
       <h2 className="create-login__title">Create Your Account</h2>
+      {
+        stateUser
+          ? (
+            <div className="create-login__success-cont">
+              <h2 className="create-login__success-message">you created your account successfully</h2>
+              <Link className="create-login__success-message" to="/login">Authenticate</Link>
+            </div>
+          )
+          : ''
+      }
       <form className="create-login__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"

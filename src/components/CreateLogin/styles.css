@@ -1,6 +1,6 @@
 .create-login__container{
   background-color: #67676783;
-  max-width: 600px;
+  max-width: 500px;
   margin-top: 80px;
 }
 
@@ -8,6 +8,17 @@
   text-align: center;
   color: #fad12c8b;
   font-size: 35px;
+  padding: 12px;
+}
+
+.create-login__success-cont{
+  line-height: 20px;
+}
+
+.create-login__success-message{
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 25px;
   padding: 12px;
 }
 
@@ -28,7 +39,7 @@
   text-align: center;
   font-size: 22px;
   outline: none;
-  height: 40px;
+  height: 36px;
   width: 95%;
 }
 
@@ -49,7 +60,7 @@
   color: rgba(255, 0, 0, 0.651);
   text-align: center;
   line-height: 18px;
-  font-size: 19px;
+  max-width: 350px;
   margin-top: 5px;
-  width: 100%;
+  font-size: 19px;
 }

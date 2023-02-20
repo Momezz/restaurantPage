@@ -36,7 +36,7 @@ export const createUser = createAsyncThunk(
 );
 
 export const convert = (value) => {
-  if (value === undefined || value === 'USER' || value === '') {
+  if (value === undefined || value.role === 'USER' || value === '') {
     return false;
   }
   return true;
