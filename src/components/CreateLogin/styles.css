@@ -4,7 +4,6 @@
   margin-top: 80px;
 }
 
-
 .create-login__title{
   text-align: center;
   color: #fad12c8b;
@@ -44,4 +43,13 @@
 
 .create-login__btn:hover{
   background-color: #eacd59;
+}
+
+.create-login__error{
+  color: rgba(255, 0, 0, 0.651);
+  text-align: center;
+  line-height: 18px;
+  font-size: 19px;
+  margin-top: 5px;
+  width: 100%;
 }
