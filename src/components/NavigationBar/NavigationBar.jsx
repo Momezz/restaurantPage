@@ -1,17 +1,16 @@
 import './styles.css';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import CartCounter from '../CartCounter/CartCounter';
-import { login, convert } from '../../services/auth';
+import { convert } from '../../services/auth';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
   const userLogin = useSelector((state) => state.login.user.user);
-  const dispatch = useDispatch();
   const role = convert(userLogin);
   const handleLogout = () => {
-    localStorage.clear();
-    dispatch(login());
+    navigate('/profile');
   };
   return (
     <article className="navigation__card">
@@ -43,7 +42,7 @@ const NavigationBar = () => {
           onClick={handleLogout}
           className="navigation__btn-logout"
         >
-          <ion-icon name="power-outline" />
+          <ion-icon name="person-outline" />
         </button>
       </div>
     </article>

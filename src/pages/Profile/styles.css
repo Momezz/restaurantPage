@@ -1,0 +1,125 @@
+.profile__container{
+  background-image: url("https://tse2.mm.bing.net/th?id=OIF.UjmjApvc%2f7vCaPx4jz47gA&pid=Api&P=0");
+  font-family: 'Kalam', cursive;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.profile__nav{
+  background-color: #676767cf;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  height: 60px;
+  width: 100%;
+}
+
+.profile__link{
+  border: 1px solid aliceblue;
+  text-decoration: none;
+  color: aliceblue;
+  text-align: center;
+  width: 90px;
+}
+
+.profile__btn-logout{
+  background-color: transparent;
+  border: none;
+}
+
+.profile__btn-logout ion-icon{
+  background-color: transparent;
+  color: aliceblue;
+  width: 30px;
+}
+
+.profile__data{
+  margin-top: 50px;
+  width: 100%;
+}
+
+.profile__image{
+  box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.32);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.32);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.32);
+  border-radius: 50px;
+  margin-left: 25%;
+  width: 120px;
+}
+
+.prifile__name{
+  text-shadow: 8px 10px 6px rgb(9, 5, 5);
+  margin-bottom: 0px;
+  text-align: center;
+  margin-left: 30px;
+  font-size: 25px;
+  margin-top: 0px;
+}
+
+.prifile__items-cont{
+  box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.42);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.42);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(9,5,5,0.42);
+  border: 2px solid aliceblue;
+  margin-bottom: 10px;
+  margin: 0 auto 20px;
+  max-width: 700px;
+  line-height: 5px;
+  height: 70px;
+  width: 80%;
+}
+
+.prifile__items{
+  text-shadow: 8px 10px 6px rgb(9, 5, 5);
+  justify-content: flex-end;
+  padding-right: 30px;
+  font-size: 25px;
+  display: flex;
+}
+
+@media(min-width: 700px){
+  .profile__image{
+    margin-bottom: 60px;
+    margin-left: 15%;
+    margin-top: 20px;
+  }
+
+  .prifile__name{
+    font-size: 40px;
+  }
+
+  .prifile__items{
+    font-size: 30px;
+  }
+
+  .prifile__items-cont{
+    height: 90px;
+  }
+}
+
+@media(min-width: 1000px){
+  .profile__image{
+    margin-bottom: 40px;
+    margin-left: 15%;
+    margin-top: 50px;
+    width: 150px;
+  }
+
+  .prifile__name{
+    font-size: 45px;
+  }
+}
+
+  @media(min-width: 1500px){
+    .profile__image{
+      margin-left: 10%;
+      margin-top: 70px;
+    }
+  }
+
