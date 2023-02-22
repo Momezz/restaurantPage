@@ -5,7 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
 import { createImage } from '../../features/uploads/uploadsSlice';
-import { createUser, updateUser } from '../../services/users';
+import { createUser } from '../../services/users';
+import { updateUser } from '../../features/users/usersSlice';
 
 const CreateLogin = () => {
   const { id } = useParams();
@@ -19,7 +20,6 @@ const CreateLogin = () => {
     const { files } = target;
     const image = files[0];
     setFile(image);
-    console.log('image', image);
   };
   const handleClick = () => {
     document.getElementById('form-menu').reset();
@@ -62,10 +62,9 @@ const CreateLogin = () => {
     onSubmit: (values) => {
       try {
         if (id) {
-          dispatch(updateUser({ ...values, image: uploads }));
+          dispatch(updateUser({ ...values, _id: id }));
         }
         if (values && uploads && id === undefined) {
-          console.log('uploads', uploads);
           dispatch(createUser({ ...values, image: uploads }));
           setStateUser(true);
         }
@@ -99,14 +98,14 @@ const CreateLogin = () => {
           )
           : ''
       }
-      <div className="form-menu__img-container">
+      <div className="form__img-container">
         <form
           id="form-menu"
-          className="form-menu__img-form"
+          className="form__img-form"
           onSubmit={handleSubmitimage}
         >
-          <h2 className="management-form__image-text">Select Image</h2>
-          <div className="management-form__file">
+          <h2 className="form__image-text">Select Image</h2>
+          <div className="form__file">
             <input
               type="file"
               name="image"
@@ -117,7 +116,7 @@ const CreateLogin = () => {
           </div>
           <button
             id="form-menu__img-button"
-            className="management-form__btn"
+            className="form__btn"
             type="submit"
             onClick={handleClick}
           >
@@ -125,8 +124,8 @@ const CreateLogin = () => {
           </button>
         </form>
         {uploads ? (
-          <figure className="form-menu__img-preview">
-            <img src={uploads} alt="" />
+          <figure className="form-menu__cont">
+            <img className="form-menu__img-preview" src={uploads} alt="" />
           </figure>
         ) : null}
       </div>

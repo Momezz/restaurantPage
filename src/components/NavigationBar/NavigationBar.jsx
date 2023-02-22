@@ -1,17 +1,14 @@
 import './styles.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import CartCounter from '../CartCounter/CartCounter';
-import { convert } from '../../services/auth';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
   const navigate = useNavigate();
-  const userLogin = useSelector((state) => state.login.user.user);
-  const role = convert(userLogin);
   const handleLogout = () => {
     navigate('/profile');
   };
+  const userLoged = JSON.parse(localStorage.getItem('userData'));
   return (
     <article className="navigation__card">
       <h1 className="navigation__title">Restaurant</h1>
@@ -22,7 +19,7 @@ const NavigationBar = () => {
           </div>
           <div className="navigation__li">
             {
-              !role
+              !userLoged
                 ? <Link className="navigation__text" to="/login">BOOKINGS</Link>
                 : <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
             }
@@ -40,7 +37,7 @@ const NavigationBar = () => {
         <button
           type="submit"
           onClick={handleLogout}
-          className="navigation__btn-logout"
+          className={userLoged ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
         >
           <ion-icon name="person-outline" />
         </button>

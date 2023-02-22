@@ -66,6 +66,10 @@
   font-weight: 600;
 }
 
+.navigation__btn-logout-none{
+  display: none;
+}
+
 .navigation__btn-logout{
   background-color: #010101;
   justify-content: center;
@@ -82,6 +86,10 @@
   color: #FAD02C;
   font-size: 15px;
   border: none;
+}
+
+.navigation__btn-logout ion-icon:hover{
+  color: #fad12cb3;
 }
 
 @media (min-width: 768px) {

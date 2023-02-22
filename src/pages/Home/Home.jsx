@@ -16,7 +16,7 @@ const Home = () => {
         <NavigationBar />
       </nav>
       <section className="home__map-carousel">
-        <article>
+        <article className="home__map-sub-cont">
           <ImageCarousel imagenes={mockImagenes} />
         </article>
         <div className="home__container-map">

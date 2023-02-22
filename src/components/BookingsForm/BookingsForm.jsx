@@ -11,13 +11,15 @@ const BookingsForm = () => {
   useEffect(() => {
     dispatch(getBookings());
   }, []);
-
+  const userLoged = JSON.parse(localStorage.getItem('userData'));
   const reservationData = {
+    idUser: userLoged._id,
     name: form.name,
     reservationDate: new Date(form.reservationDate),
     reservationTime: form.reservationTime,
     numberPeople: form.numberPeople,
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
