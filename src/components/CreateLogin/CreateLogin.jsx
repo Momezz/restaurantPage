@@ -1,14 +1,30 @@
 import './styles.css';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createImage } from '../../features/uploads/uploadsSlice';
 import { createUser } from '../../services/users';
+import { updateUser } from '../../features/users/usersSlice';
 
 const CreateLogin = () => {
+  const { id } = useParams();
+  const { uploads } = useSelector((state) => state.upload);
+  const [file, setFile] = useState([]);
   const [stateUser, setStateUser] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => { }, [uploads]);
+  const handleChangeImage = ({ target }) => {
+    const { files } = target;
+    const image = files[0];
+    setFile(image);
+  };
+  const handleClick = () => {
+    document.getElementById('form-menu').reset();
+  };
+
   const validationSchema = Yup.object().shape({
     name: Yup
       .string()
@@ -31,9 +47,12 @@ const CreateLogin = () => {
       .string()
       .required('Obligatory field')
       .min(10, 'The number must have at least 10 characters'),
+    image: Yup
+      .string(),
   });
   const formik = useFormik({
     initialValues: {
+      image: '',
       name: '',
       email: '',
       password: '',
@@ -42,8 +61,11 @@ const CreateLogin = () => {
     validationSchema,
     onSubmit: (values) => {
       try {
-        if (values) {
-          dispatch(createUser(values));
+        if (id) {
+          dispatch(updateUser({ ...values, _id: id }));
+        }
+        if (values && uploads && id === undefined) {
+          dispatch(createUser({ ...values, image: uploads }));
           setStateUser(true);
         }
       } catch (error) {
@@ -51,6 +73,17 @@ const CreateLogin = () => {
       }
     },
   });
+
+  const handleSubmitimage = async (event) => {
+    event.preventDefault();
+    if (file) {
+      try {
+        dispatch(createImage(file));
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
+  };
 
   return (
     <article className="create-login__container">
@@ -65,6 +98,37 @@ const CreateLogin = () => {
           )
           : ''
       }
+      <div className="form__img-container">
+        <form
+          id="form-menu"
+          className="form__img-form"
+          onSubmit={handleSubmitimage}
+        >
+          <h2 className="form__image-text">Select Image</h2>
+          <div className="form__file">
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              className="form-menu__imput-file"
+              onChange={handleChangeImage}
+            />
+          </div>
+          <button
+            id="form-menu__img-button"
+            className="form__btn"
+            type="submit"
+            onClick={handleClick}
+          >
+            Upload Image
+          </button>
+        </form>
+        {uploads ? (
+          <figure className="form-menu__cont">
+            <img className="form-menu__img-preview" src={uploads} alt="" />
+          </figure>
+        ) : null}
+      </div>
       <form className="create-login__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"

@@ -1,18 +1,14 @@
 import './styles.css';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import CartCounter from '../CartCounter/CartCounter';
-import { login, convert } from '../../services/auth';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
-  const userLogin = useSelector((state) => state.login.user.user);
-  const dispatch = useDispatch();
-  const role = convert(userLogin);
+  const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.clear();
-    dispatch(login());
+    navigate('/profile');
   };
+  const userLoged = JSON.parse(localStorage.getItem('userData'));
   return (
     <article className="navigation__card">
       <h1 className="navigation__title">Restaurant</h1>
@@ -23,7 +19,7 @@ const NavigationBar = () => {
           </div>
           <div className="navigation__li">
             {
-              !role
+              !userLoged
                 ? <Link className="navigation__text" to="/login">BOOKINGS</Link>
                 : <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
             }
@@ -41,9 +37,9 @@ const NavigationBar = () => {
         <button
           type="submit"
           onClick={handleLogout}
-          className="navigation__btn-logout"
+          className={userLoged ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
         >
-          <ion-icon name="power-outline" />
+          <ion-icon name="person-outline" />
         </button>
       </div>
     </article>
