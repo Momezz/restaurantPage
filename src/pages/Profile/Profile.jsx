@@ -27,15 +27,15 @@ const Profile = () => {
         </button>
       </nav>
       <article className="profile__data">
-        <img className="profile__image" src={roles.image} alt="imagen" />
-        <h2 className="prifile__name">{roles.name}</h2>
-        <div className="prifile__items-cont">
-          <p className="prifile__items">Reservas</p>
-          <span className="prifile__items">0</span>
+        <img className="profile__image" src={roles.image} alt="img" />
+        <h2 className="profile__name">{roles.name}</h2>
+        <div className="profile__items-cont">
+          <p className="profile__items">Bookings</p>
+          <span className="profile__items">0</span>
         </div>
-        <div className="prifile__items-cont">
-          <p className="prifile__items">Pedidos </p>
-          <span className="prifile__items">0</span>
+        <div className="profile__items-cont">
+          <p className="profile__items">Shoppings </p>
+          <span className="profile__items">0</span>
         </div>
       </article>
     </section>

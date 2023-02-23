@@ -11,9 +11,9 @@ const BookingsForm = () => {
   useEffect(() => {
     dispatch(getBookings());
   }, []);
-  const userLoged = JSON.parse(localStorage.getItem('userData'));
-  const reservationData = {
-    idUser: userLoged._id,
+  const userLogged = JSON.parse(localStorage.getItem('userData'));
+  const booking = {
+    id: userLogged._id,
     name: form.name,
     reservationDate: new Date(form.reservationDate),
     reservationTime: form.reservationTime,
@@ -23,7 +23,7 @@ const BookingsForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      dispatch(createBooking(reservationData));
+      dispatch(createBooking(booking));
     } catch (error) {
       throw new Error(error);
     }
@@ -43,7 +43,7 @@ const BookingsForm = () => {
         /><br /><br />
         <input
           type="number"
-          id="number-poeple"
+          id="number-people"
           name="numberPeople"
           placeholder="Number of people"
           onChange={handleChange}
@@ -66,7 +66,7 @@ const BookingsForm = () => {
           className="bookings-form__input"
           required
         /><br /><br />
-        <input className="bookings-form__btn" type="submit" value="Reservar" />
+        <input className="bookings-form__btn" type="submit" value="Reserve" />
       </form>
     </article>
   );
