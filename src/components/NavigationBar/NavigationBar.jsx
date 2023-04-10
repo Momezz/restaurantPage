@@ -37,7 +37,7 @@ const NavigationBar = () => {
         <button
           type="submit"
           onClick={handleLogout}
-          className={userLoged ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
+          className={userLoged && userLoged.length !== 0 ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
         >
           <ion-icon name="person-outline" />
         </button>

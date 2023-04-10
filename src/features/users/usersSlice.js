@@ -64,6 +64,9 @@ const usersSlice = createSlice({
     builder.addCase(getUsers.fulfilled, (state, action) => {
       state.users = action.payload;
     });
+    builder.addCase(getUserById.fulfilled, (state, action) => {
+      state.users = action.payload;
+    });
     builder.addCase(createUser.fulfilled, (state, action) => {
       state.userDetail = action.payload;
     });
