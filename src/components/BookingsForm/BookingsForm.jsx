@@ -11,6 +11,7 @@ const BookingsForm = () => {
   useEffect(() => {
     dispatch(getBookings());
   }, []);
+
   const userLogged = JSON.parse(localStorage.getItem('userData'));
   const booking = {
     id: userLogged._id,
