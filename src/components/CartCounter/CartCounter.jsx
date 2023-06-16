@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 const CartCounter = () => {
   const { items } = useSelector((state) => state.shopping);
   return (
-    <Link to="/cart">
+    <Link className="cart-counter__link" to="/cart">
       <div className="cart-counter__container">
         <div className="cart-counter__item">
           {items.length}

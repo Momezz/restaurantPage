@@ -14,5 +14,9 @@
 .cart-counter__item{
 font-size: 30PX;
 font-weight: 700;
-color: #010101;
+color: #FAD02C;
+}
+
+.cart-counter__link{
+  color: #FAD02C;
 }
