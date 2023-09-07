@@ -1,26 +1,29 @@
 import './styles.css';
-import HomeDiches from '../HomeDishes/HomeDishes';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getMenus } from '../../features/menus/menusSlice';
+import HomeDishes from '../HomeDishes/HomeDishes';
 
 const ImageContainer = () => {
-  const values = {
-    title: 'plato1',
-    description: 'las mejores pltos del pais',
-    price: '34564',
-  };
-  console.log(values);
+  const { menus } = useSelector((state) => state.menus);
+  const desserts = menus.filter((item) => item.category === 'desserts');
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMenus());
+  }, []);
   return (
-    <section className="image-container__container">
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-      <HomeDiches />
-    </section>
+    <>
+      <h2 className="image-container__title">Try our delicious desserts</h2>
+      <div className="image-container__container">
+        {
+          desserts.map((menu) => (
+            <li className="image-container__li" key={menu._id}>
+              <HomeDishes menu={menu} />
+            </li>
+          ))
+        }
+      </div>
+    </>
   );
 };
 export default ImageContainer;

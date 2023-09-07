@@ -3,6 +3,7 @@
   justify-content: center;
   flex-direction: row;
   align-items: center;
+  height: 100%;
   display: flex;
   width: 100%;
 }
@@ -13,12 +14,13 @@
 }
 
 .image-carousel__btn{
-  background-color: #EDE8E4;
-  height: 310px;
+  background-color: black;
+  height: 240px;
+  width: 20;
 }
 
-ion-icon{
-  background-color: #FAD02C;
+.image-carousel__btn ion-icon{
+  background-color: black;
   font-size: 25px;
 }
 

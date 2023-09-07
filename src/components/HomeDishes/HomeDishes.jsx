@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { formatPrice } from '../../services/menus';
 import './styles.css';
 
-const HomeDiches = () => {
+const HomeDishes = ({ menu }) => {
   const [display, setDisplay] = useState(false);
   const handleSetTrue = () => {
     setDisplay(true);
@@ -16,14 +19,18 @@ const HomeDiches = () => {
       onMouseEnter={handleSetTrue}
       onMouseLeave={handleSetFalse}
     >
-      <img className="home-dishes__img" src="https://tse4.mm.bing.net/th?id=OIP.qxeWJ8vokM7ra-E6vSjTngHaFZ&pid=Api&P=0" alt="Imagen" />
-      <div className={display ? 'home-dishes__text' : 'home-dishes__none'}>
-        <h2 className="home-dishes__title">title</h2>
-        <p className="home-dishes__paragraph">Aqui descripcion</p>
-        <span className="home-dishes__price">$35.000</span>
-      </div>
+      <img className="home-dishes__img" src={menu.image} alt="Imagen" />
+      <Link to={`/details/${menu._id}`}>
+        <div className={display ? 'home-dishes__text' : 'home-dishes__none'}>
+          <h2 className="home-dishes__title">{menu.name}</h2>
+          <span className="home-dishes__price">{formatPrice(menu.price)}</span>
+        </div>
+      </Link>
     </div>
   );
 };
+HomeDishes.propTypes = {
+  menu: PropTypes.objectOf(PropTypes.objectOf).isRequired,
+};
 
-export default HomeDiches;
+export default HomeDishes;
