@@ -12,13 +12,15 @@ const Menu = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.login.user.user);
   const { menus } = useSelector((state) => state.menus);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState();
   useEffect(() => {
+    const storedCategory = JSON.parse(localStorage.getItem('categorySelected'));
     dispatch(getMenus());
-    setCategory(category);
+    setCategory(storedCategory);
   }, []);
   function handleCategoryChange(event) {
     setCategory(event.target.value);
+    localStorage.setItem('categorySelected', JSON.stringify(event.target.value));
   }
 
   const role = convert(userLogin);
