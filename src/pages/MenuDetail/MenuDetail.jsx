@@ -19,9 +19,9 @@ const MenuDetails = () => {
   };
   return (
     <section className="menu-detail__container">
-      <butto onClick={handleBack} className="menu-detail__link">
+      <button type="button" onClick={handleBack} className="menu-detail__link">
         <ion-icon name="arrow-back-outline" />
-      </butto>
+      </button>
       <div className="menu-detail__sub-cont">
         <img className="menu-detail__img" src={data[0].image} alt="Imagen" />
         <div className="menu-details__desktop">
