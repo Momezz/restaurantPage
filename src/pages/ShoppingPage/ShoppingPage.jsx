@@ -6,7 +6,7 @@ import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 import { removeItem } from '../../features/shopping/shoppingSlice';
 import PayNowForm from '../../components/PayNowForm/PayNowForm';
-import { addToCart } from '../../services/menus';
+import { addToCart, formatPrice } from '../../services/menus';
 
 const stripePromise = loadStripe('pk_test_51MF0poEjW2XUbvI3wVmCFBDPscgdUzDXONDz57bQp6GIg0YQ8d5H0c7T0415OfjiOaNXoHCkEKNiaUqguTsZdkUU00cjmEtXA7');
 
@@ -34,7 +34,7 @@ const ShoppingPage = () => {
               <li className="shoppin-page__items" key={item.id}>
                 <p className="shoppin-page__name">{item.repetNumber.length}&nbsp;</p>
                 <p className="shoppin-page__name">&nbsp;{item.name}</p>
-                <p className="shoppin-page__price"><span className="shopping-page__key">$</span>{item.price}</p>
+                <p className="shoppin-page__price"><span className="shopping-page__key"> </span>{formatPrice(item.price)}</p>
                 <button
                   className="shopping-page__btn"
                   type="submit"
@@ -45,7 +45,7 @@ const ShoppingPage = () => {
               </li>
             ))}
           <div className="shopping-page__sub-cont">
-            <div className="shopping-page__total">Total: $ {totalPrice}</div>
+            <div className="shopping-page__total">Total:  {formatPrice(totalPrice)}</div>
           </div>
         </div>
         <div className="shopping-page__pay-form">
