@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { formatPrice } from '../../services/menus';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import './styles.css';
 
 const HomeDishes = ({ menu }) => {
@@ -11,6 +12,11 @@ const HomeDishes = ({ menu }) => {
   };
   const handleSetFalse = () => {
     setDisplay(false);
+  };
+  const item = {
+    id: menu._id,
+    name: menu.name,
+    price: menu.price,
   };
 
   return (
@@ -26,6 +32,9 @@ const HomeDishes = ({ menu }) => {
           <span className="home-dishes__price">{formatPrice(menu.price)}</span>
         </div>
       </Link>
+      <div className={display ? 'home-dishes__shopping-cart' : 'home-dishes__none'}>
+        <ShoppingCart item={item} />
+      </div>
     </div>
   );
 };

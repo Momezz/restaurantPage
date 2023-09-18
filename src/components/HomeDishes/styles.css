@@ -2,8 +2,16 @@
 
 .home-dishes__container {
   position: relative;
-  height: 300px;
-  width: 350px;
+  height: 250px;
+  width: 250px;
+}
+
+.home-dishes__shopping-cart {
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  right: 0px;
+  top: 0px;
 }
 
 .home-dishes__text {
@@ -34,15 +42,17 @@
 
 .home-dishes__title {
   margin-bottom: 0px;
+  font-weight: 900;
+  font-size: 22px;
 }
 
 .home-dishes__price {
-  font-size: 25px;
   font-weight: 600;
+  font-size: 27px;
 }
 
 .home-dishes__img {
-  height: 300px;
+  height: 100%;
   width: 100%;
   z-index: 0;
 }
