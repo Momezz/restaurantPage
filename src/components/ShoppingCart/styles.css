@@ -1,0 +1,21 @@
+.shopping-cart__container {
+  background-color: rgba(255, 255, 255, 0.589);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.shopping-cart__container:hover {
+  height: 60px;
+  width: 60px;
+}
+
+.shopping-cart__container ion-icon {
+  background-color: black;
+  border-radius: 50%;
+  font-size: 60px;
+  color: white;
+  margin: 0 auto;
+  height: 80%;
+  width: 90%;
+}

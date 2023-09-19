@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { convert } from '../../services/auth';
-import { addItem } from '../../features/shopping/shoppingSlice';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
 import { formatPrice } from '../../services/menus';
 import './styles.css';
 
 const MenuCard = ({ product }) => {
   const userLogin = useSelector((state) => state.login.user.user);
-  const dispatch = useDispatch();
   const [deleteProduct, setDeleteProduct] = useState(0);
   const handleDelet = () => {
     setDeleteProduct(product._id);
@@ -22,52 +21,44 @@ const MenuCard = ({ product }) => {
     name: product.name,
     price: product.price,
   };
-  const handleAdd = () => {
-    dispatch(addItem(item));
-  };
+
   return (
-    <article className="menu-card__container" key={product._id}>
-      <div className="menu-card__table">
+    <article className="menu-cart__container" key={product._id}>
+      <div className="menu-cart__table">
         <button
           onClick={handleDelet}
-          className={role ? 'menu-card__delete-icon' : 'menu-card__delete-none'}
+          className={role ? 'menu-cart__delete-icon' : 'menu-cart__delete-none'}
           type="button"
         ><ion-icon name="trash-outline" />
         </button>
-        <div className="menu-card__tr">
-          <h2 className="menu-card__td-title menu-card__td">{product.name}</h2>
-          <Link className="menu-card__see-detail" to={`/details/${product._id}`}>See More</Link>
-          <img className="menu-cards__img" src={product.image} alt="Imagen" />
-          <span className="menu-card__td">{formatPrice(product.price)}</span>
+        <div className="menu-cart__tr">
+          <h2 className="menu-cart__td-title menu-cart__td">{product.name}</h2>
+          <Link className="menu-cart__see-detail" to={`/details/${product._id}`}>See More</Link>
+          <img className="menu-carts__img" src={product.image} alt="Imagen" />
+          <span className="menu-cart__td">{formatPrice(product.price)}</span>
         </div>
-        <hr className="menu-card__hr" />
+        <hr className="menu-cart__hr" />
       </div>
-      <div className="menu-card__link-cont">
+      <div className="menu-cart__link-cont">
         <Link
-          className="menu-card__link"
+          className="menu-cart__link"
           to={`/manage-conten/${product._id}`}
         >
           <ion-icon name="restaurant-outline" />
         </Link>
-        <div className={!role ? 'menu-card__link-layer' : null}> </div>
+        <div className={!role ? 'menu-cart__link-layer' : null}> </div>
       </div>
-      <div className="menu-card__delet-component">
+      <div className="menu-cart__delet-component">
         {
           deleteProduct === product._id && (
-            <div className="menu-card__confir-delete">
+            <div className="menu-cart__confir-delete">
               <ConfirmDelete id={product._id} />
             </div>
           )
         }
-        <div className="menu-card__shopping">
-          <button
-            className="menu-card__shopping-cart"
-            onClick={handleAdd}
-            type="button"
-          >
-            <ion-icon name="cart-outline" />
-          </button>
-        </div>
+      </div>
+      <div className="menu-cart__shopping-cart">
+        <ShoppingCart item={item} />
       </div>
     </article>
   );
