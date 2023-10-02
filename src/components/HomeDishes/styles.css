@@ -2,8 +2,8 @@
 
 .home-dishes__container {
   position: relative;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
 }
 
 .home-dishes__shopping-cart {
@@ -58,6 +58,11 @@
 }
 
 @media (min-width: 768px) {
+  .home-dishes__container {
+    height: 250px;
+    width: 250px;
+  }
+
   .home-dishes__text {
     line-height: 40px;
     font-size: 35px;

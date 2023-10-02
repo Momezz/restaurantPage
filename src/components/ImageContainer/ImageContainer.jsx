@@ -12,9 +12,9 @@ const ImageContainer = () => {
     dispatch(getMenus());
   }, []);
   return (
-    <>
+    <article className="image-container__container">
       <h2 className="image-container__title">Try our delicious desserts</h2>
-      <div className="image-container__container">
+      <ul className="image-container__ul">
         {
           desserts.map((menu) => (
             <li className="image-container__li" key={menu._id}>
@@ -22,8 +22,8 @@ const ImageContainer = () => {
             </li>
           ))
         }
-      </div>
-    </>
+      </ul>
+    </article>
   );
 };
 export default ImageContainer;
