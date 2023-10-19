@@ -41,3 +41,5 @@ export const convert = (value) => {
   }
   return true;
 };
+
+export const isEmptyObject = (obj) => Object.keys(obj).length === 0;
