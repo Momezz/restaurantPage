@@ -67,4 +67,5 @@ const MenuCard = ({ product }) => {
 MenuCard.propTypes = {
   product: PropTypes.objectOf(PropTypes.objectOf).isRequired,
 };
+
 export default MenuCard;
