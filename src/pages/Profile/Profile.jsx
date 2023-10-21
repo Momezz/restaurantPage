@@ -50,17 +50,24 @@ const Profile = () => {
           <div className="profile__nail profile__bottom-right" />
         </div>
         {
-          isEmptyObject(user)
-            || user.bookings.length === undefined
-            || user.bookings.length === null
-            || user.bookings.length === 0
+          isEmptyObject(userStorage)
+            || userStorage.bookings.length === undefined
+            || userStorage.bookings.length === null
+            || userStorage.bookings.length === 0
             ? (<h2 className="profile__sub-title">There are no reservations in your history</h2>)
             : (
-              <div className="profile__cont-info">
-                <div className="profile__item">
-                  <ItemList item={userStorage} />
-                </div>
-              </div>
+              <ul className="profile__cont-info">
+                <h2 className="profile__sub-title">Your reservation history</h2>
+                {
+                  userStorage.bookings.length > 0
+                    ? userStorage.bookings.map((item) => (
+                      <li className="profile__item" key={item._id}>
+                        <ItemList item={item} />
+                      </li>
+                    ))
+                    : null
+                }
+              </ul>
             )
         }
       </div>
