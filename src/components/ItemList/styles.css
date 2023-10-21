@@ -3,7 +3,6 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  line-height: 10px;
   width: 100%;
 }
 
@@ -13,6 +12,8 @@
 }
 
 .item-list__paragraph {
+  line-height: 25px;
+  font-size: 18px;
   padding: 10px;
   margin: 0;
 }
