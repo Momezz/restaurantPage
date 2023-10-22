@@ -13,7 +13,7 @@ import './styles.css';
 
 const PayNowForm = ({ totalPrice }) => {
   const [loading, setLoading] = useState(false);
-  const [statePayment, setStatePayment] = useState(false);
+  const [stateAction, setStateAction] = useState(false);
   const elements = useElements();
   const stripe = useStripe();
 
@@ -33,7 +33,7 @@ const PayNowForm = ({ totalPrice }) => {
           return;
         }
         setLoading(true);
-        setStatePayment(true);
+        setStateAction(true);
       }
       return;
     } catch (error) {
@@ -71,12 +71,12 @@ const PayNowForm = ({ totalPrice }) => {
           {
             totalPrice
               ? <button className="pay-now__btn-true pay-now__btn" type="submit">Pay</button>
-              : <button className="pay-now__btn-false" type="submit">No has seleccionado ningún producto</button>
+              : <button className="pay-now__btn-false" type="submit">You have not selected any product</button>
           }
         </div>
       </form>
       <article className={loading ? 'pay-now__visible' : 'pay-now__hidden'}>
-        <PaymentResponse statePayment={statePayment} />
+        <PaymentResponse stateAction={stateAction} />
       </article>
     </section>
   );
