@@ -1,46 +1,105 @@
 /* eslint-disable react/no-array-index-key */
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getPublications } from '../../services/publications';
 import './styles.css';
 
-const ImageCarousel = ({ imagenes }) => {
-  const [currentImage, setCurrentImage] = useState(0);
+const ImageCarousel = () => {
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(0);
+  const [data, setData] = useState({});
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const nextImage = () => {
-    setCurrentImage(currentImage === imagenes.length - 1 ? 0 : currentImage + 1);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    setStart(0);
+    setEnd(width <= 768 ? 1 : 2);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [window.innerWidth, width]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await getPublications();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    getData();
+  }, []);
+
+  const handleNext = () => {
+    if (end < data.length - 1) {
+      setStart(start + 1);
+      setEnd(end + 1);
+    } else {
+      setStart(0);
+      setEnd(width <= 768 ? 1 : 2);
+    }
   };
 
-  const lastImage = () => {
-    setCurrentImage(currentImage === 0 ? imagenes.length - 1 : currentImage - 1);
+  const handleLast = () => {
+    if (start > 0) {
+      setStart(start - 1);
+      setEnd(end - 1);
+    } else {
+      setStart(data.length - end);
+      setEnd(data.length);
+    }
   };
-  if (!Array.isArray(imagenes) || imagenes.length === 0) {
-    return;
+
+  let elements = {};
+  try {
+    if (!Array.isArray(data) || Object.keys(data).length === 0) {
+      return;
+    }
+    elements = data.slice(start, end);
+  } catch (error) {
+    console.log(error);
   }
+
   // eslint-disable-next-line consistent-return
   return (
-    <div className="image-carousel__container">
-      <button className="image-carousel__btn" onClick={lastImage} type="button">
-        <ion-icon name="caret-back-outline" />
-      </button>
-      {
-        imagenes.map((imagen, index) => (
-          <div className="image-carousel__images" key={index}>
-            {
-              currentImage === index && (
-                <img className="image-carousel__img" key={index} src={imagen} alt="imagen" />
-              )
-            }
-          </div>
-        ))
-}
-      <button className="image-carousel__btn" onClick={nextImage} type="button">
-        <ion-icon name="caret-forward-outline" />
-      </button>
-    </div>
+    <section className="image-carousel__container">
+      <ul className="image-carousel__ul">
+        <button
+          className="image-carousel__btn image-carousel__btn-right"
+          onClick={handleLast}
+          type="button"
+        >
+          <ion-icon name="caret-back-outline" />
+        </button>
+        {elements.map((element) => (
+          <li className="image-carousel__li" key={element._id}>
+            <div className="image-carousel__container_left">
+              <img
+                className="image-carousel__img"
+                src={element.image}
+                alt="imagen-publication"
+              />
+              <p className="image-carousel__date">create age 21 hours</p>
+            </div>
+            <div className="image-carousel__right">
+              <h3 className="image-carousel__title">
+                {element.publicationTitle}
+              </h3>
+              <p className="image-carousel__paragraph">{element.description}</p>
+            </div>
+          </li>
+        ))}
+        <button
+          className="image-carousel__btn image-carousel__btn-left"
+          onClick={handleNext}
+          type="button"
+        >
+          <ion-icon name="caret-forward-outline" />
+        </button>
+      </ul>
+    </section>
   );
 };
 
-ImageCarousel.propTypes = {
-  imagenes: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
-};
 export default ImageCarousel;
