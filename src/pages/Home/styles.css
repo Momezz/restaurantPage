@@ -1,28 +1,9 @@
 .home__container {
-  background-image: url("http://www.solofondos.com/wp-content/uploads/2015/11/5B1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
 }
 
 .home__navigation {
-  width: 100%;
-}
-
-.home__container-map {
-  margin: 0 auto;
-  display: flex;
-  padding: 10px;
-  height: 250px;
-  width: 70%;
-}
-
-iframe {
-  border: 3px solid #FAD02C;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin: 10px;
+  margin-bottom: 100px;
   width: 100%;
 }
 
@@ -32,22 +13,6 @@ iframe {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .home__map-carousel {
-    grid-template-columns: 60% auto;
-    background-color: black;
-    justify-content: center;
-    padding-left: 90px;
-    height: 320px;
-    display: grid;
-  }
-
-  iframe {
-    height: 265px;
-    width: 450px;
-  }
-
-  .home__map-sub-cont {
-    height: 100%;
-  }
+.home__map-sub-cont {
+  width: 100%;
 }

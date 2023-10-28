@@ -1,26 +1,110 @@
-.image-carousel__container{
-  background-color: black;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playpen+Sans:wght@400;800&display=swap');
+
+*{
+  margin: 0;
+}
+
+.image-carousel__container {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(250, 208, 44, 1) 35%, rgba(0, 0, 0, 1) 100%);
+  flex-direction: column;
   display: flex;
   width: 100%;
 }
 
-.image-carousel__images img{
-  height: 100%;
+.image-carousel__ul {
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  display: flex;
+  padding: 10px;
+}
+
+.image-carousel__btn ion-icon {
+  background-color: transparent;
+  color: #fad12ca4;
+  width: 35px;
+}
+
+.image-carousel__btn {
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  top: 40%;
+}
+
+.image-carousel__btn-right {
+  left: 10px;
+}
+
+.image-carousel__btn-left {
+  right: 10px;
+}
+
+.image-carousel__li {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  min-height: 360px;
+  max-width: 500px;
+  overflow: hidden;
+  list-style: none;
+  display: flex;
+  padding: 7px;
+  margin: 20px;
   width: 100%;
 }
 
-.image-carousel__btn{
-  background-color: black;
-  height: 240px;
-  width: 20;
+.image-carousel__right {
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Playpen Sans', cursive;
+  height: 110px;
+  width: 100%;
 }
 
-.image-carousel__btn ion-icon{
-  background-color: black;
-  font-size: 25px;
+.image-carousel__title {
+  margin-bottom: 3px;
+  font-weight: 700;
+  font-size: 20px;
+  color: azure;
+  height: 30px;
 }
 
+.image-carousel__paragraph {
+  color: rgb(226, 244, 244);
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0 auto;
+  height: 80px;
+  width: 80%;
+}
+
+.image-carousel__container_left {
+  position: relative;
+  width: 60%;
+}
+
+.image-carousel__img {
+  width: 80%;
+}
+
+.image-carousel__date {
+  color: rgb(184, 232, 232);
+  position: absolute;
+  font-size: 16px;
+  right: 15px;
+  top: 5px;
+}
+
+.image-carousel__img {
+  width: 100%;
+}
+
+@media(min-width: 768px){
+  .image-carousel__li {
+    border: 2px solid azure;
+  }
+}
