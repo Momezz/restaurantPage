@@ -46,7 +46,7 @@ const BookingsForm = () => {
 
   return (
     <article className="bookings-form__container">
-      <h2 className="bookings-form__title">Hello, Sign in</h2>
+      <h2 className="bookings-form__title">Hello, {userLogged.name}</h2>
       <form className="bookings-form__subcont" onSubmit={handleSubmit}>
         <input
           type="text"

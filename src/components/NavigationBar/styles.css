@@ -9,17 +9,6 @@
   width: 100%;
 }
 
-.navigation__count-items{
-  position: absolute;
-  bottom: -60px;
-  right: 0;
-}
-
-.navigation__validations{
-  background-color: #010101;
-  margin-bottom: 10px;
-}
-
 .navigation__title{
   text-align: center;
   color: #FAD02C;
@@ -28,17 +17,17 @@
   font-size: 55px;
 }
 
+.navigation__cont-ul{
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
 .navigation__ul{
   flex-direction: column;
   align-items: center;
   list-style: none;
   font-size: 25px;
-  display: flex;
-  width: 100%;
-}
-
-.navigation__cont-ul{
-  align-items: center;
   display: flex;
   width: 100%;
 }
@@ -64,32 +53,45 @@
   margin-top: 60px;
   color: #FAD02C;
   font-weight: 600;
+} 
+
+.navigation__count-items{
+  position: absolute;
+  z-index: 100;
+  bottom: 0px;
+  right: 0;
 }
 
-.navigation__btn-logout-none{
-  display: none;
+.navigation__login-icon{
+  justify-content: center;
+  position: absolute;
+  display: flex;
+  width: 97%;
+  bottom: 0;
 }
 
 .navigation__btn-logout{
-  background-color: #010101;
+  transition: transform 0.5s ease;
+  background-color: transparent;
   justify-content: center;
   align-items: center;
   position: absolute;
   display: flex;
-  bottom: 15px;
+  bottom: 10px;
   border: none;
-  right: 40%;
+  height: 70px;
+  width: 70px;
+  left: 10px;
 }
 
-.navigation__btn-logout ion-icon{
-  background-color: #010101;
-  color: #FAD02C;
-  font-size: 15px;
-  border: none;
+.navigation__btn-logout:hover{
+  transform: scale(1.1);
 }
 
-.navigation__btn-logout ion-icon:hover{
-  color: #fad12cb3;
+.navigation__img {
+  border-radius: 40%;
+  cursor: pointer;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -107,11 +109,6 @@
     flex-direction: row;
     display: flex;
     height: 80px;
-  }
-
-  .navigation__btn-logout{
-    bottom: -55px;
-    right: 45%;
   }
 
   .navigation__count-items{

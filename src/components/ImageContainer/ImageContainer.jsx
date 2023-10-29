@@ -26,4 +26,5 @@ const ImageContainer = () => {
     </article>
   );
 };
+
 export default ImageContainer;
