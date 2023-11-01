@@ -67,7 +67,7 @@ const ImageCarousel = () => {
       <ul className="image-carousel__ul">
         <button
           className="image-carousel__btn image-carousel__btn-right"
-          onClick={handleLast}
+          onClick={handleNext}
           type="button"
         >
           <ion-icon name="caret-back-outline" />
@@ -92,7 +92,7 @@ const ImageCarousel = () => {
         ))}
         <button
           className="image-carousel__btn image-carousel__btn-left"
-          onClick={handleNext}
+          onClick={handleLast}
           type="button"
         >
           <ion-icon name="caret-forward-outline" />
