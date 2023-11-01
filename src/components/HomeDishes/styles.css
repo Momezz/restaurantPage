@@ -6,12 +6,10 @@
   width: 200px;
 }
 
-.home-dishes__shopping-cart {
-  position: absolute;
-  z-index: 1000;
-  padding: 5px;
-  right: 0px;
-  top: 0px;
+.home-dishes__img {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
 }
 
 .home-dishes__text {
@@ -51,10 +49,12 @@
   font-size: 27px;
 }
 
-.home-dishes__img {
-  height: 100%;
-  width: 100%;
-  z-index: 0;
+.home-dishes__shopping-cart {
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  right: 0px;
+  top: 0px;
 }
 
 @media (min-width: 768px) {

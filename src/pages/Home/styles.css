@@ -3,16 +3,15 @@
 }
 
 .home__navigation {
-  margin-bottom: 100px;
+  width: 100%;
+}
+
+.home__carousel {
   width: 100%;
 }
 
 .home__image-container {
   justify-content: center;
   display: flex;
-  width: 100%;
-}
-
-.home__map-sub-cont {
   width: 100%;
 }

@@ -9,7 +9,7 @@ const Home = () => (
     <nav className="home__navigation">
       <NavigationBar />
     </nav>
-    <article>
+    <article className="home__carousel">
       <ImageCarousel />
     </article>
     <article className="home__image-container">

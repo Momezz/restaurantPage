@@ -1,13 +1,9 @@
 import './styles.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartCounter from '../CartCounter/CartCounter';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate('/profile');
-  };
   const userLoged = JSON.parse(localStorage.getItem('userData'));
   return (
     <article className="navigation__card">
@@ -32,16 +28,19 @@ const NavigationBar = () => {
       <div className="navigation__count-items">
         <CartCounter />
       </div>
-      <div className="navigation__validations">
-        <LoginIcon />
-        <button
-          type="submit"
-          onClick={handleLogout}
-          className={userLoged && userLoged.length !== 0 ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
-        >
-          <ion-icon name="person-outline" />
-        </button>
-      </div>
+      {
+        !userLoged
+          ? (
+            <div className="navigation__login-icon">
+              <LoginIcon />
+            </div>
+          )
+          : (
+            <Link className="navigation__btn-logout" to="/profile">
+              <img className="navigation__img" src={userLoged.image} alt="Imagen" />
+            </Link>
+          )
+      }
     </article>
   );
 };
