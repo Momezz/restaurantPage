@@ -1,5 +1,5 @@
-/* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 import { getPublications } from '../../services/publications';
 import './styles.css';
 
@@ -80,7 +80,10 @@ const ImageCarousel = () => {
                 src={element.image}
                 alt="imagen-publication"
               />
-              <p className="image-carousel__date">create age 21 hours</p>
+              <p className="image-carousel__date">
+                <span className="image-carousel__paragraph">Fecha de publicación:</span>
+                {format(new Date(element.createdAt), "d 'de' MMM 'del' yyyy")}
+              </p>
             </div>
             <div className="image-carousel__right">
               <h3 className="image-carousel__title">

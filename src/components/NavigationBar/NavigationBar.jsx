@@ -11,13 +11,13 @@ const NavigationBar = () => {
       <nav className="navigation__cont-ul">
         <ul className="navigation__ul">
           <div className="navigation__li">
-            <Link className="navigation__text" to="/">HOME</Link>
+            <Link className="navigation__text" to="/">Inicio</Link>
           </div>
           <div className="navigation__li">
             {
               !userLoged
-                ? <Link className="navigation__text" to="/login">BOOKINGS</Link>
-                : <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
+                ? <Link className="navigation__text" to="/login">Reservas</Link>
+                : <Link className="navigation__text" to="/bookings">Reservas</Link>
             }
           </div>
           <div className="navigation__li">

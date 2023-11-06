@@ -32,13 +32,13 @@ const Menu = () => {
       </nav>
       <article className="menu-page__sub-cont">
         <div className="menu-page__btn-container">
-          <button className="menu-page__btn-option" type="submit" value="drinks" onClick={handleCategoryChange}>Drinks</button>
-          <button className="menu-page__btn-option" type="submit" value="meats" onClick={handleCategoryChange}>Meats</button>
-          <button className="menu-page__btn-option" type="submit" value="soups" onClick={handleCategoryChange}>Soups</button>
-          <button className="menu-page__btn-option" type="submit" value="pasta" onClick={handleCategoryChange}>Pasta</button>
-          <button className="menu-page__btn-option" type="submit" value="desserts" onClick={handleCategoryChange}>Desserts</button>
+          <button className="menu-page__btn-option" type="submit" value="drinks" onClick={handleCategoryChange}>Bebidas</button>
+          <button className="menu-page__btn-option" type="submit" value="meats" onClick={handleCategoryChange}>Carnes</button>
+          <button className="menu-page__btn-option" type="submit" value="soups" onClick={handleCategoryChange}>Sopas</button>
+          <button className="menu-page__btn-option" type="submit" value="pasta" onClick={handleCategoryChange}>Pastas</button>
+          <button className="menu-page__btn-option" type="submit" value="desserts" onClick={handleCategoryChange}>Postres</button>
         </div>
-        <h2 className={category === '' ? 'menu-page__title menu-page__title-height' : 'menu-page__title-none'}>What do you want to eat today</h2>
+        <h2 className={category === '' ? 'menu-page__title menu-page__title-height' : 'menu-page__title-none'}>Qué quieres comer hoy</h2>
         <h2 className="menu-page__title">{category}</h2>
         <ul className="menu-page__products">
           {filteredProducts.map((product) => (
