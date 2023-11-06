@@ -12,7 +12,7 @@ import Profile from './pages/Profile/Profile';
 
 const App = () => {
   useEffect(() => {
-    document.title = 'Restauran Page';
+    document.title = 'Restaurant';
   }, []);
   return (
     <Routes>

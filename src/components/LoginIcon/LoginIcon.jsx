@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 
 const LoginIcon = () => (
-  <div className="navigation__icon-cont">
-    <Link className="navigation__icon" to="/login">Login</Link>
-    <Link className="navigation__icon" to="/sign-up">sign up</Link>
+  <div className="login-icon__container">
+    <Link className="login-icon__btn login-icon__btn-left" to="/login">I am a VIP client</Link>
+    <Link className="login-icon__btn login-icon__btn-right" to="/sign-up">I want to be a VIP client</Link>
   </div>
 );
 

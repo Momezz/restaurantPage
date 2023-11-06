@@ -30,8 +30,8 @@ const Profile = () => {
   return (
     <section className="profile__container">
       <nav className="profile__nav">
-        <Link className="profile__link" to="/">Home</Link>
-        <Link className="profile__link" to={`/sign-up/${userStorage._id}`}>Edit</Link>
+        <Link className="profile__link" to="/">Inicio</Link>
+        <Link className="profile__link" to={`/sign-up/${userStorage._id}`}>Editar</Link>
         <button
           type="submit"
           className="profile__btn-logout"
@@ -54,10 +54,10 @@ const Profile = () => {
             || userStorage.bookings.length === undefined
             || userStorage.bookings.length === null
             || userStorage.bookings.length === 0
-            ? (<h2 className="profile__sub-title">There are no reservations in your history</h2>)
+            ? (<h2 className="profile__sub-title">No hay reservas en tu historial.</h2>)
             : (
               <ul className="profile__cont-info">
-                <h2 className="profile__sub-title">Your reservation history</h2>
+                <h2 className="profile__sub-title">Tu historial de reservas</h2>
                 {
                   userStorage.bookings.length > 0
                     ? userStorage.bookings.map((item) => (

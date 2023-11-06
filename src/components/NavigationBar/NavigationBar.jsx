@@ -1,13 +1,9 @@
 import './styles.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartCounter from '../CartCounter/CartCounter';
 import LoginIcon from '../LoginIcon/LoginIcon';
 
 const NavigationBar = () => {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate('/profile');
-  };
   const userLoged = JSON.parse(localStorage.getItem('userData'));
   return (
     <article className="navigation__card">
@@ -15,13 +11,13 @@ const NavigationBar = () => {
       <nav className="navigation__cont-ul">
         <ul className="navigation__ul">
           <div className="navigation__li">
-            <Link className="navigation__text" to="/">HOME</Link>
+            <Link className="navigation__text" to="/">Inicio</Link>
           </div>
           <div className="navigation__li">
             {
               !userLoged
-                ? <Link className="navigation__text" to="/login">BOOKINGS</Link>
-                : <Link className="navigation__text" to="/bookings">BOOKINGS</Link>
+                ? <Link className="navigation__text" to="/login">Reservas</Link>
+                : <Link className="navigation__text" to="/bookings">Reservas</Link>
             }
           </div>
           <div className="navigation__li">
@@ -32,16 +28,19 @@ const NavigationBar = () => {
       <div className="navigation__count-items">
         <CartCounter />
       </div>
-      <div className="navigation__validations">
-        <LoginIcon />
-        <button
-          type="submit"
-          onClick={handleLogout}
-          className={userLoged && userLoged.length !== 0 ? 'navigation__btn-logout' : 'navigation__btn-logout-none'}
-        >
-          <ion-icon name="person-outline" />
-        </button>
-      </div>
+      {
+        !userLoged
+          ? (
+            <div className="navigation__login-icon">
+              <LoginIcon />
+            </div>
+          )
+          : (
+            <Link className="navigation__btn-logout" to="/profile">
+              <img className="navigation__img" src={userLoged.image} alt="Imagen" />
+            </Link>
+          )
+      }
     </article>
   );
 };

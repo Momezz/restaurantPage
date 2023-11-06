@@ -47,7 +47,7 @@ const PayNowForm = ({ totalPrice }) => {
     <section className="pay-now__cont-relative">
       <form className="pay-now__container" onSubmit={handleSubmit}>
         <botton className={loading ? 'pay-now__close' : 'pay-now__hidden'} type="submit" onClick={hanleOcultar}>X</botton>
-        <p className="pay-now__card-number">Card Number</p>
+        <p className="pay-now__card-number">Número de tarjeta</p>
         <div className="pay-now__cards pay-now__name-card">
           <div className="pay-now__input pay-now__no-borde"><CardNumberElement /></div>
           <img className="pay-now__img" src={masterCard} alt="mastercard-img" />
@@ -56,11 +56,11 @@ const PayNowForm = ({ totalPrice }) => {
         </div>
         <div className="pay-now__date">
           <div>
-            <p>Month</p>
+            <p className="pay-now__item">Month</p>
             <div className="pay-now__input pay-now__center  pay-now__name-card"><CardExpiryElement /></div>
           </div>
           <div>
-            <p>Cvv</p>
+            <p className="pay-now__item">Cvv</p>
             <div className="pay-now__cards  lineal">
               <div className="pay-now__input pay-now__flex pay-now__no-borde"><CardCvcElement /></div>
               <img className="pay-now__cvv" src={cvc} alt="cvv-card" />
@@ -70,8 +70,8 @@ const PayNowForm = ({ totalPrice }) => {
         <div className="pay-now__btn-cont">
           {
             totalPrice
-              ? <button className="pay-now__btn-true pay-now__btn" type="submit">Pay</button>
-              : <button className="pay-now__btn-false" type="submit">You have not selected any product</button>
+              ? <button className="pay-now__btn-true pay-now__btn" type="submit">Pagar</button>
+              : <button className="pay-now__btn-false" type="submit">No has seleccionado ningún producto</button>
           }
         </div>
       </form>
