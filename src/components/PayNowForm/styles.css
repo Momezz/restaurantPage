@@ -1,5 +1,6 @@
 .pay-now__cont-relative {
   position: relative;
+  padding: 15px;
   width: 300px;
 }
 
@@ -34,9 +35,14 @@
 
 .pay-now__input {
   padding-left: 9px;
+  margin-top: 5px;
   outline: none;
   height: 25px;
   width: 100%;
+}
+
+.pay-now__item {
+  margin-top: 15px;
 }
 
 .pay-now__cards {
@@ -69,7 +75,6 @@
 }
 
 .pay-now__btn-true {
-  border: none;
   color: rgba(255, 255, 255, 0.826);
   background-color: #FAD02C;
   margin-top: 10px;
@@ -92,7 +97,6 @@
   font-size: 20px;
   padding: 12px;
   border: none;
-  border: none;
   width: 100%;
 }
 
@@ -103,9 +107,8 @@
 }
 
 .pay-now__hidden {
-  display: none;
   color: #fad12c8b;
-  ;
+  display: none;
 }
 
 .pay-now__visible {

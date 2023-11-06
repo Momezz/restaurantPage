@@ -46,13 +46,13 @@ const BookingsForm = () => {
 
   return (
     <article className="bookings-form__container">
-      <h2 className="bookings-form__title">Hello, {userLogged.name}</h2>
+      <h2 className="bookings-form__title">Hola, {userLogged.name}</h2>
       <form className="bookings-form__subcont" onSubmit={handleSubmit}>
         <input
           type="text"
           id="name"
           name="name"
-          placeholder="name"
+          placeholder="Nombre"
           onChange={handleChange}
           className="bookings-form__input"
           required
@@ -61,7 +61,7 @@ const BookingsForm = () => {
           type="number"
           id="number-people"
           name="numberPeople"
-          placeholder="Number of people"
+          placeholder="Cantidad de personas"
           onChange={handleChange}
           className="bookings-form__input"
           required
@@ -82,7 +82,7 @@ const BookingsForm = () => {
           className="bookings-form__input"
           required
         /><br /><br />
-        <input className="bookings-form__btn" type="submit" value="Reserve" />
+        <input className="bookings-form__btn" type="submit" value="Reservar" />
       </form>
       <article className={loading ? 'bookings-form__visible' : 'bookings-form__hidden'}>
         <PaymentResponse stateAction={stateAction} />

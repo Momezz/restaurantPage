@@ -13,7 +13,7 @@ const ImageContainer = () => {
   }, []);
   return (
     <article className="image-container__container">
-      <h2 className="image-container__title">Try our delicious desserts</h2>
+      <h2 className="image-container__title">Prueba nuestros deliciosos postres</h2>
       <ul className="image-container__ul">
         {
           desserts.map((menu) => (

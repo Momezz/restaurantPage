@@ -26,7 +26,7 @@ const ItemList = ({ item }) => {
       <p className="item-list__paragraph">
         A nombre de
         <span className="item-list__highlight-text"> {item.name}. </span>
-        El dia{formattedDate} a las {item.reservationTime}, mesa para{' '}
+        El dia {formattedDate} a las {item.reservationTime}, mesa para{' '}
         {item.numberPeople} personas
       </p>
       <div className="item-list__nail item-list__top-left" />

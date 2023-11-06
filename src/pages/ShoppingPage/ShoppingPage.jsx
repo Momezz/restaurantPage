@@ -29,7 +29,7 @@ const ShoppingPage = () => {
       <article className="shopping-cart__forms">
         <div className="shopping-cart-items">
           {items.length === 0
-            ? <h2 className="shoppin-page__empty">You still don&rsquo;t have products here</h2>
+            ? <h2 className="shoppin-page__empty">Aún no tienes productos aquí</h2>
             : listItems.map((item) => (
               <li className="shoppin-page__items" key={item.id}>
                 <p className="shoppin-page__name">{item.repetNumber.length}&nbsp;</p>

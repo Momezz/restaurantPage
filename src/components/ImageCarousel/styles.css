@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playpen+Sans:wght@400;800&display=swap');
 
-*{
+* {
   margin: 0;
 }
 
@@ -92,18 +92,19 @@
 }
 
 .image-carousel__date {
+  background-color: rgba(128, 128, 128, 0.452);
   color: rgb(184, 232, 232);
   position: absolute;
-  font-size: 16px;
-  right: 15px;
-  top: 5px;
+  font-size: 14px;
+  right: 5px;
+  bottom: 5px;
 }
 
 .image-carousel__img {
   width: 100%;
 }
 
-@media(min-width: 768px){
+@media(min-width: 768px) {
   .image-carousel__li {
     border: 2px solid azure;
   }
