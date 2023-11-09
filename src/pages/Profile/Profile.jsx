@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getUserById } from '../../features/users/usersSlice';
 import ItemList from '../../components/ItemList/ItemList';
 import { login, isEmptyObject } from '../../services/auth';
+import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 import './styles.css';
 
 const Profile = () => {
@@ -31,7 +32,7 @@ const Profile = () => {
     <section className="profile__container">
       <nav className="profile__nav">
         <Link className="profile__link" to="/">Inicio</Link>
-        <Link className="profile__link" to={`/sign-up/${userStorage._id}`}>Editar</Link>
+        <Link className="profile__link" to={`/edit/${userStorage._id}`}>Editar</Link>
         <button
           type="submit"
           className="profile__btn-logout"
@@ -43,7 +44,11 @@ const Profile = () => {
       <h2 className="profile__title">{userStorage.name}</h2>
       <div className="profile__sub-container">
         <div className="profile__cont-profile">
-          <img className="profile__img" src={userStorage.image} alt="Imagen" />
+          {
+            userStorage.image
+              ? <img className="profile__img" src={userStorage.image} alt="Imagen" />
+              : <img className="profile__img" src={profileDefault} alt="imagen por defecto" />
+          }
           <div className="profile__nail profile__top-left" />
           <div className="profile__nail profile__top-right" />
           <div className="profile__nail profile__bottom-left" />

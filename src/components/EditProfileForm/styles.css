@@ -1,0 +1,150 @@
+.edit__container{
+  background-color: #67676783;
+  max-width: 500px;
+  margin-top: 80px;
+}
+
+.form__img-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__img-form{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+
+.form__file{
+  color: rgba(255, 255, 255, 0.826);
+  border-top: 2px solid white;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  cursor: pointer;
+  display: flex;
+  height: 35px;
+  width: 65px;
+  border-radius: 50%;
+  }
+
+.form__file [type=file] {
+  position: absolute;
+  text-align: right;
+  cursor: inherit;
+  display: block;
+  height: 25px;
+  opacity: 0;
+  background-color: red;
+  right: 0;
+  top: 0;
+}
+
+.form__editable-image{
+  height: 73px;
+  margin-top: 30px
+}
+
+.form__editable-image img {
+  object-fit: cover; 
+  width: 100%;
+  height: 100%;
+}
+
+.form__image-text{
+  color: rgba(255, 255, 255, 0.826);
+  font-size: 27px;
+  margin-top: 45px;
+}
+
+
+.form__btn{
+  background-color: #fad12c8b;
+  margin-bottom: 22px;
+  margin-left: 25px;
+  color: #F9F9F9;
+  font-weight: 700;
+  margin-top: 22px;
+  font-size: 22PX;
+  border: none;
+  height: 45px;
+  width: 100%;
+}
+
+.form__btn:hover{
+  background-color: #eacd59;
+}
+
+
+
+.management-form__file [type=file] {
+  cursor: pointer;
+}
+
+.form-menu__img-preview{
+  width: 300px;
+}
+.edit__title{
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 35px;
+  padding: 12px;
+}
+
+.edit__success-cont{
+  line-height: 20px;
+}
+
+.edit__success-message{
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 25px;
+  padding: 12px;
+}
+
+.edit__subcont{
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+}
+
+.edit__input {
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #67676700;
+  border-top: 2px solid white;
+  text-align: center;
+  font-size: 22px;
+  outline: none;
+  height: 36px;
+  width: 95%;
+}
+
+.edit__btn{
+  background-color: #fad12c8b;
+  color: #F9F9F9;
+  font-weight: 700;
+  font-size: 22PX;
+  height: 45px;
+  width: 95%;
+}
+
+.edit__btn:hover{
+  background-color: #eacd59;
+}
+
+.edit__error{
+  color: rgba(255, 0, 0, 0.651);
+  text-align: center;
+  line-height: 18px;
+  max-width: 350px;
+  margin-top: 5px;
+  font-size: 19px;
+}

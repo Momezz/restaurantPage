@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp/SignUp';
 import ManageContent from './pages/ManageContent/ManageContent';
 import ShoppingPage from './pages/ShoppingPage/ShoppingPage';
 import Profile from './pages/Profile/Profile';
+import EditProfile from './pages/EditProfile/EditProfile';
 
 const App = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/manage-conten/:id" element={<ManageContent />} />
       <Route path="/cart" element={<ShoppingPage />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/edit/:id" element={<EditProfile />} />
       <Route path="*" element={<h1>Error 404</h1>} />
     </Routes>
   );
