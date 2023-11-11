@@ -28,25 +28,25 @@ const CreateLogin = () => {
   const validationSchema = Yup.object().shape({
     name: Yup
       .string()
-      .min(2, 'the name is too short')
-      .max(35, 'the name is too long')
-      .required('Obligatory field'),
+      .min(2, 'El nombre es muy corto')
+      .max(35, 'El nombre es muy largo')
+      .required('Campo obligatorio'),
     email: Yup
       .string()
-      .email('invalid email')
+      .email('Email inválido')
       .required(),
     password: Yup
       .string()
-      .required('password is required')
-      .min(8, 'enter at least 8 characters')
-      .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .matches(/[A-Z]/, 'Password must contain at least one capital letter')
-      .matches(/[0-9]/, 'Password must contain at least one number')
-      .matches(/[@$!%*?&]/, 'Password must contain at least one special character (@$!%*?&)'),
+      .required('Se requiere contraseña')
+      .min(8, 'Introduzca al menos 8 caracteres')
+      .matches(/[a-z]/, 'La contraseña debe contener al menos una letra minúscula')
+      .matches(/[A-Z]/, 'La contraseña debe contener al menos una letra mayúscula')
+      .matches(/[0-9]/, 'La contraseña debe contener al menos un número')
+      .matches(/[@$!%*?&]/, 'La contraseña debe contener al menos un carácter especial (@$!%*?&)'),
     phone: Yup
       .string()
-      .required('Obligatory field')
-      .min(10, 'The number must have at least 10 characters'),
+      .required('Campo obligatorio')
+      .min(10, 'El número debe tener al menos 10 caracteres.'),
     image: Yup
       .string(),
   });
@@ -87,13 +87,13 @@ const CreateLogin = () => {
 
   return (
     <article className="create-login__container">
-      <h2 className="create-login__title">Create Your Account</h2>
+      <h2 className="create-login__title">Crea tu cuenta</h2>
       {
         stateUser
           ? (
             <div className="create-login__success-cont">
-              <h2 className="create-login__success-message">you created your account successfully</h2>
-              <Link className="create-login__success-message" to="/login">Authenticate</Link>
+              <h2 className="create-login__success-message">Creaste tu cuenta exitosamente</h2>
+              <Link className="create-login__success-message" to="/login">Autenticar</Link>
             </div>
           )
           : ''
@@ -104,7 +104,7 @@ const CreateLogin = () => {
           className="form__img-form"
           onSubmit={handleSubmitimage}
         >
-          <h2 className="form__image-text">Select Image</h2>
+          <h2 className="form__image-text">Seleccionar imagen</h2>
           <div className="form__file">
             <input
               type="file"
