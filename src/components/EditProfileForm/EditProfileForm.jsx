@@ -5,33 +5,42 @@ import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
 import { createImage } from '../../features/uploads/uploadsSlice';
-import { createUser } from '../../services/users';
 import { updateUser } from '../../features/users/usersSlice';
 import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 
 const EditProfileForm = () => {
   const { id } = useParams();
   const { uploads } = useSelector((state) => state.upload);
-  const [file, setFile] = useState([]);
-  const [setStateUser] = useState(false);
+  const [file, setFile] = useState('');
+  const [imageProfile, setImageProfile] = useState(uploads);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
   const dispatch = useDispatch();
   const userStorage = JSON.parse(localStorage.getItem('userData'));
-  console.log('user', userStorage);
+  let formik = '';
 
   useEffect(() => {
-    setFile(userStorage.image);
+    formik.setValues({
+      image: imageProfile || '',
+      name: userStorage.name || '',
+      email: userStorage.email || '',
+      phone: userStorage.phone || '',
+    });
   }, []);
+
+  useEffect(() => {
+    if (uploads === '') {
+      setImageProfile(userStorage.image);
+    } else {
+      setImageProfile(uploads);
+    }
+  }, [uploads]);
   const handleChangeImage = ({ target }) => {
     const { files } = target;
     const image = files[0];
-    if (image !== '') {
-      setFile(image);
-    } else {
-      setFile(userStorage.image);
-    }
+    setFile(image);
     setButtonDisabled(false);
   };
+
   const handleClick = () => {
     document.getElementById('form-menu').reset();
   };
@@ -40,17 +49,20 @@ const EditProfileForm = () => {
     name: Yup
       .string()
       .min(2, 'El nombre es muy corto')
-      .max(35, 'El nombre es muy largo'),
+      .max(35, 'El nombre es muy largo')
+      .required('Obligatory field'),
     email: Yup
       .string()
-      .email('Email inválido'),
+      .email('Email inválido')
+      .required('Obligatory field'),
     phone: Yup
       .string()
-      .min(10, 'El número debe tener al menos 10 caracteres.'),
+      .min(10, 'El número debe tener al menos 10 caracteres.')
+      .required('Obligatory field'),
     image: Yup
       .string(),
   });
-  const formik = useFormik({
+  formik = useFormik({
     initialValues: {
       image: '',
       name: '',
@@ -62,25 +74,13 @@ const EditProfileForm = () => {
     onSubmit: (values) => {
       try {
         if (id) {
-          dispatch(updateUser({ ...values, image: file, _id: id }));
-        }
-        if (values && uploads && id === undefined) {
-          dispatch(createUser({ ...values, image: file }));
-          setStateUser(true);
+          dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
         }
       } catch (error) {
         throw new Error(error);
       }
     },
   });
-  useEffect(() => {
-    formik.setValues({
-      image: userStorage.image || '',
-      name: userStorage.name || '',
-      email: userStorage.email || '',
-      phone: userStorage.phone || '',
-    });
-  }, []);
 
   const handleSubmitimage = async (event) => {
     event.preventDefault();
@@ -94,17 +94,17 @@ const EditProfileForm = () => {
   };
 
   return (
-    <article className="create-login__container">
-      <h2 className="create-login__title">Edita tu perfil</h2>
-      <div className="form__img-container">
+    <article className="edit-profile__container">
+      <h2 className="edit-profile__title">Edita tu perfil</h2>
+      <div className="edit-profile__img-container">
         <form
           id="form-menu"
-          className="form__img-form"
+          className="edit-profile__img-form"
           onSubmit={handleSubmitimage}
         >
-          <h2 className="form__image-text">Seleccionar imagen</h2>
-          <div className="form__file">
-            <div className="form__editable-image">
+          <h2 className="edit-profile__image-text">Seleccionar imagen</h2>
+          <div className="edit-profile__file">
+            <div className="edit-profile__editable-image">
               {
                 userStorage.image
                   ? <img src={userStorage.image} alt="imagen" />
@@ -115,61 +115,61 @@ const EditProfileForm = () => {
               type="file"
               name="image"
               accept="image/*"
-              className="form-menu__imput-file"
               onChange={handleChangeImage}
             />
           </div>
-          <button
-            id="form-menu__img-button"
-            className="form__btn"
-            type="submit"
-            onClick={handleClick}
-            disabled={isButtonDisabled}
-          >
-            Cargar imagen
-          </button>
+          <div className="edit-profile__cont">
+            <button
+              id="form-menu__img-button"
+              className="edit-profile__btn"
+              type="submit"
+              onClick={handleClick}
+              disabled={isButtonDisabled}
+            >
+              Cargar imagen
+            </button>
+          </div>
         </form>
         {uploads ? (
-          <figure className="form-menu__cont">
-            <img className="form-menu__img-preview" src={uploads} alt="" />
+          <figure className="edit-profile__cont">
+            <img className="edit-profile__img-preview" src={uploads} alt="Imagen de perfil" />
           </figure>
         ) : null}
       </div>
-      <form className="create-login__subcont" onSubmit={formik.handleSubmit}>
+      <form className="edit-profile__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"
           id="name"
           name="name"
           placeholder="Name"
-          className="create-login__input"
+          className="edit-profile__input"
           onChange={formik.handleChange}
           defaultValue={userStorage.name}
         />
-        <div className="create-login__error">{formik.errors.name && formik.touched.name ? formik.errors.name : ''}</div>
-        <br /><br />
+        <div className="edit-profile__error">{formik.errors.name && formik.touched.name ? formik.errors.name : ''}</div>
         <input
           type="email"
           id="email"
           name="email"
           placeholder="Email"
-          className="create-login__input"
+          className="edit-profile__input"
           onChange={formik.handleChange}
           defaultValue={userStorage.email}
         />
-        <div className="create-login__error">{formik.errors.email && formik.touched.email ? formik.errors.email : ''}</div>
-        <br /><br />
+        <div className="edit-profile__error">{formik.errors.email && formik.touched.email ? formik.errors.email : ''}</div>
         <input
           type="phone"
           id="phone"
           name="phone"
           placeholder="Phone"
-          className="create-login__input"
+          className="edit-profile__input"
           onChange={formik.handleChange}
           defaultValue={userStorage.phone}
         />
-        <div className="create-login__error">{formik.errors.phone && formik.touched.phone ? formik.errors.phone : ''}</div>
-        <br /><br />
-        <input className="create-login__btn" type="submit" value="Editar" />
+        <div className="edit-profile__error">{formik.errors.phone && formik.touched.phone ? formik.errors.phone : ''}</div>
+        <div className="edit-profile__cont">
+          <input className="edit-profile__btn-inf" type="submit" value="Editar" />
+        </div>
       </form>
     </article>
   );

@@ -4,14 +4,14 @@ import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 
 const EditProfile = () => (
-  <section className="sign-up__container">
-    <nav className="sign-up__nav">
+  <section className="edit-profile-page__container">
+    <nav className="edit-profile-page__nav">
       <NavigationBar />
     </nav>
-    <article className="sign-up__form">
+    <article className="edit-profile-page__form">
       <EditProfileForm />
     </article>
-    <footer className="sign-up__footer">
+    <footer className="edit-profile-page__footer">
       <Footer />
     </footer>
   </section>
