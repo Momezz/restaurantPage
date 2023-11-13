@@ -1,23 +1,65 @@
-.create-login__container{
+.create-login__container {
   background-color: #67676783;
+  position: relative;
   max-width: 500px;
   margin-top: 80px;
 }
 
-.form__img-container{
-  display: flex;
-  flex-direction: column;
+.create-login__message {
+  background-color: rgba(128, 128, 128, 0.841);
   justify-content: center;
-}
-
-.form__img-form{
-  display: flex;
   flex-direction: column;
-  width: 90%;
   align-items: center;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
-.form__file{
+.create-login__message-display-none {
+  display: none;
+}
+
+.create-login__message-paragraph {
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 27px;
+}
+
+.create-login__title {
+  text-align: center;
+  color: #fad12c8b;
+  font-size: 35px;
+  padding: 12px;
+}
+
+.form__img-container {
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.form__img-form {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 90%;
+}
+
+.form__image-text {
+  color: rgba(255, 255, 255, 0.826);
+  margin-bottom: 5px;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 27px;
+}
+
+.form__file {
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #67676700;
+  border-top: 2px solid white;
+  padding-bottom: 35px;
+  border-style: solid;
   position: relative;
   margin-left: 25px;
   overflow: hidden;
@@ -36,16 +78,7 @@
   top: 0;
 }
 
-.form__image-text{
-  color: rgba(255, 255, 255, 0.826);
-  margin-bottom: 5px;
-  text-align: center;
-  margin-top: 15px;
-  font-size: 27px;
-}
-
-
-.form__btn{
+.form__btn {
   background-color: #fad12c8b;
   margin-bottom: 22px;
   margin-left: 25px;
@@ -58,44 +91,15 @@
   width: 100%;
 }
 
-.form__btn:hover{
+.form__btn:hover {
   background-color: #eacd59;
 }
 
-.form__file {
-color: rgba(255, 255, 255, 0.826);
-background-color: #67676700;
-border-top: 2px solid white;
-padding-bottom: 35px;
-border-style: solid;
-}
-
-.management-form__file [type=file] {
-  cursor: pointer;
-}
-
-.form-menu__img-preview{
+.form-menu__img-preview {
   width: 300px;
 }
-.create-login__title{
-  text-align: center;
-  color: #fad12c8b;
-  font-size: 35px;
-  padding: 12px;
-}
 
-.create-login__success-cont{
-  line-height: 20px;
-}
-
-.create-login__success-message{
-  text-align: center;
-  color: #fad12c8b;
-  font-size: 25px;
-  padding: 12px;
-}
-
-.create-login__subcont{
+.create-login__subcont {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
@@ -116,7 +120,7 @@ border-style: solid;
   width: 95%;
 }
 
-.create-login__btn{
+.create-login__btn {
   background-color: #fad12c8b;
   color: #F9F9F9;
   font-weight: 700;
@@ -125,11 +129,11 @@ border-style: solid;
   width: 95%;
 }
 
-.create-login__btn:hover{
+.create-login__btn:hover {
   background-color: #eacd59;
 }
 
-.create-login__error{
+.create-login__error {
   color: rgba(255, 0, 0, 0.651);
   text-align: center;
   line-height: 18px;

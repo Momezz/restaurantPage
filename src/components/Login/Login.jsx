@@ -26,18 +26,19 @@ const Login = () => {
       if (typeof response.payload.message === 'string') {
         setResult(response.payload.message);
       } else if (typeof response.payload === 'object') {
-        setResult('Credentials entered successfully');
+        setResult('Credenciales ingresadas exitosamente');
         setTimeout(() => {
           navigate('/');
         }, 4000);
       } else {
-        setResult('An unexpected error has occurred');
+        setResult('Ha ocurrido un error inesperado');
       }
     } catch (error) {
       throw new Error(error);
     }
     handleLogin();
   };
+
   return (
     <article className="login__container">
       <div className={showMessage ? 'login__message' : 'login__message-display-none'}>
@@ -45,7 +46,7 @@ const Login = () => {
           {result}
         </p>
       </div>
-      <h2 className="login__title">Hello, Sign in</h2>
+      <h2 className="login__title">Inicia sesión</h2>
       <form className="login__subcont" onSubmit={handleSubmit}>
         <input
           type="email"
@@ -65,7 +66,7 @@ const Login = () => {
           onChange={handleChange}
           required
         /><br /><br />
-        <input className="login__btn" type="submit" value="Sign in" />
+        <input className="login__btn" type="submit" value="Iniciar sesión" />
       </form>
     </article>
   );
