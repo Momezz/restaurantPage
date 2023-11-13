@@ -19,6 +19,7 @@ export const createUser = createAsyncThunk(
     return result;
   },
 );
+
 export const getUserById = createAsyncThunk(
   'users/getUser',
   async (data) => {
@@ -28,7 +29,6 @@ export const getUserById = createAsyncThunk(
         'Content-Type': 'application/json',
       },
     };
-
     const res = await fetch(`${BASE_URL}/api/users/${data}`, options);
     const result = await res.json();
     return result;
@@ -46,7 +46,6 @@ export const updateUser = createAsyncThunk(
       },
       body: JSON.stringify(formdata),
     };
-
     const res = await fetch(`${BASE_URL}/api/users/${_id}`, options);
     const result = await res.json();
     return result;
