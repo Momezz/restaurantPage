@@ -76,12 +76,9 @@ const usersSlice = createSlice({
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       const { users } = current(state);
-      const usersUpdated = users.map((r) => {
-        if (r._id === action.payload._id) {
-          return { ...r, ...action.payload };
-        }
-        return r;
-      });
+      const usersUpdated = Array.isArray(users)
+        ? users.map((r) => (r._id === action.payload._id ? { ...r, ...action.payload } : r))
+        : users;
       state.users = usersUpdated;
     });
   },

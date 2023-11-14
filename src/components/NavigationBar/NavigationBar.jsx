@@ -2,6 +2,7 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 import CartCounter from '../CartCounter/CartCounter';
 import LoginIcon from '../LoginIcon/LoginIcon';
+import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 
 const NavigationBar = () => {
   const userLoged = JSON.parse(localStorage.getItem('userData'));
@@ -37,7 +38,11 @@ const NavigationBar = () => {
           )
           : (
             <Link className="navigation__btn-logout" to="/profile">
-              <img className="navigation__img" src={userLoged.image} alt="Imagen" />
+              {
+                userLoged.image
+                  ? <img className="navigation__img" src={userLoged.image} alt="Imagen" />
+                  : <img className="navigation__img" src={profileDefault} alt="imagen por defecto" />
+              }
             </Link>
           )
       }
