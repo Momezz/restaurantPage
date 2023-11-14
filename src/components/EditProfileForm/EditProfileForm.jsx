@@ -1,12 +1,13 @@
 import './styles.css';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
 import { createImage } from '../../features/uploads/uploadsSlice';
 import { updateUser } from '../../features/users/usersSlice';
 import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
+import PaymentResponse from '../PaymentResponse/PaymentResponse';
 
 const EditProfileForm = () => {
   const { id } = useParams();
@@ -14,7 +15,10 @@ const EditProfileForm = () => {
   const [file, setFile] = useState('');
   const [imageProfile, setImageProfile] = useState(uploads);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [stateAction, setStateAction] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userStorage = JSON.parse(localStorage.getItem('userData'));
   let formik = '';
 
@@ -45,20 +49,26 @@ const EditProfileForm = () => {
     document.getElementById('form-menu').reset();
   };
 
+  const resetValueLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
   const validationSchema = Yup.object().shape({
     name: Yup
       .string()
       .min(2, 'El nombre es muy corto')
       .max(35, 'El nombre es muy largo')
-      .required('Obligatory field'),
+      .required('Campo obligatorio'),
     email: Yup
       .string()
       .email('Email inválido')
-      .required('Obligatory field'),
+      .required('Campo obligatorio'),
     phone: Yup
       .string()
       .min(10, 'El número debe tener al menos 10 caracteres.')
-      .required('Obligatory field'),
+      .required('Campo obligatorio'),
     image: Yup
       .string(),
   });
@@ -71,10 +81,23 @@ const EditProfileForm = () => {
     },
     validationSchema,
     validateOnMount: false,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
         if (id) {
-          dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
+          const response = await dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
+          if (typeof response.payload === 'string') {
+            resetValueLoading();
+            setStateAction(false);
+          } else if (typeof response.payload === 'object') {
+            setStateAction(true);
+            resetValueLoading();
+            setTimeout(() => {
+              navigate('/profile');
+            }, 4000);
+          } else {
+            setStateAction(false);
+            resetValueLoading();
+          }
         }
       } catch (error) {
         throw new Error(error);
@@ -171,6 +194,9 @@ const EditProfileForm = () => {
           <input className="edit-profile__btn-inf" type="submit" value="Editar" />
         </div>
       </form>
+      <article className={loading ? 'edit-profile__visible' : 'edit-profile__hidden'}>
+        <PaymentResponse stateAction={stateAction} />
+      </article>
     </article>
   );
 };
