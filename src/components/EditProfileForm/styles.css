@@ -1,8 +1,9 @@
 .edit-profile__container {
   background-color: #67676783;
+  position: relative;
+  text-align: center;
   max-width: 500px;
   margin-top: 40px;
-  text-align: center;
 }
 
 .edit-profile__title {
@@ -12,8 +13,8 @@
 }
 
 .edit-profile__img-container {
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   display: flex;
 }
 
@@ -150,4 +151,19 @@
   margin-top: -10px;
   max-width: 350px;
   font-size: 19px;
+}
+
+.edit-profile__visible {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  top: 0;
+}
+
+.edit-profile__hidden {
+  display: none;
 }
