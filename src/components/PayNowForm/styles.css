@@ -17,20 +17,23 @@
   width: 95%;
 }
 
-.pay-now__close {
-  color: #FAD02C;
-}
-
 .pay-now__card-number {
   margin-top: 12px;
 }
 
-.pay-now__name-card {
+.pay-now__cards {
   border: 1px solid rgba(255, 255, 255, 0.826);
+  margin-bottom: 12px;
+  align-items: center;
+  padding: 4px;
+  padding-top: 14px;
+  margin-top: 5px;
+  display: flex;
+  height: 37px;
 }
 
-.pay-now__center {
-  padding-top: 20px;
+.pay-now__name-card {
+  border: 1px solid rgba(255, 255, 255, 0.826);
 }
 
 .pay-now__input {
@@ -39,18 +42,6 @@
   outline: none;
   height: 25px;
   width: 100%;
-}
-
-.pay-now__item {
-  margin-top: 15px;
-}
-
-.pay-now__cards {
-  border: 1px solid rgba(255, 255, 255, 0.826);
-  align-items: center;
-  margin-top: 5px;
-  display: flex;
-  height: 37px;
 }
 
 .pay-now__no-borde {
@@ -64,9 +55,21 @@
   margin: 2px;
 }
 
+.pay-now__item {
+  margin-top: 15px;
+}
+
+.pay-now__center {
+  padding-top: 20px;
+}
+
 .pay-now__cvv {
   height: 20px;
   width: 45px;
+}
+
+.pay-now__close {
+  color: #FAD02C;
 }
 
 .pay-now__btn-cont {
@@ -100,19 +103,15 @@
   width: 100%;
 }
 
-.pay-now__cards {
-  margin-bottom: 12px;
-  padding-top: 14px;
-  padding: 4px;
-}
-
 .pay-now__hidden {
-  color: #fad12c8b;
   display: none;
 }
 
 .pay-now__visible {
   position: absolute;
-  right: -10px;
-  top: 31px;
+  text-align: center;
+  height: 90%;
+  width: 90%;
+  left: 10px;
+  top: 10px;
 }
