@@ -1,15 +1,17 @@
 import './styles.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import { getBookings, createBooking } from '../../features/bookings/bookings';
 import PaymentResponse from '../PaymentResponse/PaymentResponse';
 
 const BookingsForm = () => {
-  const [stateAction, setstateAction] = useState(false);
+  const [stateAction, setstateAction] = useState('');
   const [loading, setLoading] = useState(false);
   const { form, handleChange } = useForm({});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getBookings());
@@ -29,18 +31,22 @@ const BookingsForm = () => {
     try {
       const result = await dispatch(createBooking(booking));
       if (result.payload) {
-        setstateAction(true);
+        setstateAction('Has reservado con éxito.');
+        setTimeout(() => {
+          navigate('/profile');
+        }, 5000);
         setLoading(true);
       } else {
         setLoading(true);
+        setstateAction('Se ha producido un error inesperado.');
       }
     } catch (error) {
+      setstateAction('Se ha producido un error inesperado.');
       throw new Error(error);
     }
   };
 
   setTimeout(() => {
-    setstateAction(false);
     setLoading(false);
   }, 4000);
 

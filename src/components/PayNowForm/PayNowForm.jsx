@@ -13,9 +13,23 @@ import './styles.css';
 
 const PayNowForm = ({ totalPrice }) => {
   const [loading, setLoading] = useState(false);
-  const [stateAction, setStateAction] = useState(false);
+  const [stateAction, setStateAction] = useState('');
+  const [isCardNumberValid, setCardNumberValid] = useState(false);
+  const [isCardExpiryValid, setCardExpiryValid] = useState(false);
+  const [isCardCvcValid, setCardCvcValid] = useState(false);
   const elements = useElements();
   const stripe = useStripe();
+  const handleChangeCardNumber = (event) => {
+    setCardNumberValid(event.complete);
+  };
+
+  const handleChangeCardExpiry = (event) => {
+    setCardExpiryValid(event.complete);
+  };
+
+  const handleChangeCardCvc = (event) => {
+    setCardCvcValid(event.complete);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,55 +38,73 @@ const PayNowForm = ({ totalPrice }) => {
       card: elements.getElement(CardNumberElement, CardExpiryElement, CardCvcElement),
     });
 
+    const hanleOcultar = () => {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+    };
     try {
       if (totalPrice) {
         const amount = Math.floor(totalPrice * 100);
-        createPayment(paymentMethod, amount, 'Home delivery');
-        if (paymentMethod === undefined) {
-          setLoading(true);
-          return;
+        const paymentIntent = await createPayment(paymentMethod, amount, 'Home delivery');
+        if (paymentIntent) {
+          setStateAction(paymentIntent.message);
+          hanleOcultar();
+        } else {
+          setStateAction('Hubo un problema inesperado');
+          hanleOcultar();
         }
-        setLoading(true);
-        setStateAction(true);
+        hanleOcultar();
       }
       return;
     } catch (error) {
       throw new Error(error);
     }
   };
-  const hanleOcultar = () => {
-    setLoading(false);
-  };
   return (
     <section className="pay-now__cont-relative">
       <form className="pay-now__container" onSubmit={handleSubmit}>
-        <botton className={loading ? 'pay-now__close' : 'pay-now__hidden'} type="submit" onClick={hanleOcultar}>X</botton>
         <p className="pay-now__card-number">Número de tarjeta</p>
         <div className="pay-now__cards pay-now__name-card">
-          <div className="pay-now__input pay-now__no-borde"><CardNumberElement /></div>
+          <div className="pay-now__input pay-now__no-borde">
+            <CardNumberElement onChange={handleChangeCardNumber} />
+          </div>
           <img className="pay-now__img" src={masterCard} alt="mastercard-img" />
           <img className="pay-now__img" src={americanExpress} alt="a-express-img" />
           <img className="pay-now__img" src={visa} alt="visa-card-img" />
         </div>
-        <div className="pay-now__date">
+        <div>
           <div>
             <p className="pay-now__item">Month</p>
-            <div className="pay-now__input pay-now__center  pay-now__name-card"><CardExpiryElement /></div>
+            <div className="pay-now__input pay-now__center  pay-now__name-card">
+              <CardExpiryElement onChange={handleChangeCardExpiry} />
+            </div>
           </div>
           <div>
             <p className="pay-now__item">Cvv</p>
-            <div className="pay-now__cards  lineal">
-              <div className="pay-now__input pay-now__flex pay-now__no-borde"><CardCvcElement /></div>
+            <div className="pay-now__cards">
+              <div className="pay-now__input pay-now__flex pay-now__no-borde">
+                <CardCvcElement onChange={handleChangeCardCvc} />
+              </div>
               <img className="pay-now__cvv" src={cvc} alt="cvv-card" />
             </div>
           </div>
         </div>
         <div className="pay-now__btn-cont">
-          {
-            totalPrice
-              ? <button className="pay-now__btn-true pay-now__btn" type="submit">Pagar</button>
-              : <button className="pay-now__btn-false" type="submit">No has seleccionado ningún producto</button>
-          }
+          {totalPrice ? (
+            <button
+              className="pay-now__btn-true pay-now__btn"
+              type="submit"
+              disabled={!isCardNumberValid || !isCardExpiryValid || !isCardCvcValid}
+            >
+              Pagar
+            </button>
+          ) : (
+            <button className="pay-now__btn-false" type="submit">
+              No has seleccionado ningún producto
+            </button>
+          )}
         </div>
       </form>
       <article className={loading ? 'pay-now__visible' : 'pay-now__hidden'}>

@@ -16,7 +16,7 @@ const EditProfileForm = () => {
   const [imageProfile, setImageProfile] = useState(uploads);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [stateAction, setStateAction] = useState(false);
+  const [stateAction, setStateAction] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStorage = JSON.parse(localStorage.getItem('userData'));
@@ -87,19 +87,20 @@ const EditProfileForm = () => {
           const response = await dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
           if (typeof response.payload === 'string') {
             resetValueLoading();
-            setStateAction(false);
+            setStateAction('Se ha producido un error inesperado.');
           } else if (typeof response.payload === 'object') {
-            setStateAction(true);
+            setStateAction('Cambios aplicados exitosamente.');
             resetValueLoading();
             setTimeout(() => {
               navigate('/profile');
             }, 4000);
           } else {
-            setStateAction(false);
+            setStateAction('Se ha producido un error inesperado.');
             resetValueLoading();
           }
         }
       } catch (error) {
+        setStateAction('Se ha producido un error inesperado.');
         throw new Error(error);
       }
     },
