@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import { reset } from '../../features/uploads/uploadsSlice';
 import FormImage from '../FormImage/FormImage';
 import { createUser } from '../../services/users';
 
@@ -13,7 +14,6 @@ const CreateLogin = () => {
   const { uploads } = useSelector((state) => state.upload);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const validationSchema = Yup.object().shape({
     name: Yup
       .string()
@@ -36,8 +36,6 @@ const CreateLogin = () => {
       .string()
       .required('Campo obligatorio')
       .min(10, 'El número debe tener al menos 10 caracteres.'),
-    image: Yup
-      .string(),
   });
 
   const handleCreateLogin = () => {
@@ -49,7 +47,6 @@ const CreateLogin = () => {
 
   const formik = useFormik({
     initialValues: {
-      image: '',
       name: '',
       email: '',
       password: '',
@@ -63,6 +60,7 @@ const CreateLogin = () => {
           setResult(`Ya existe el usuario ${values.email}`);
         } else if (typeof response.payload === 'object') {
           setResult('Usuario creado exitosamente');
+          dispatch(reset());
           setTimeout(() => {
             navigate('/login');
           }, 4000);

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -25,12 +26,18 @@ export const createImage = createAsyncThunk('uploads/createImage', async (file) 
 const uploadsSlice = createSlice({
   name: 'uploads',
   initialState,
+  reducers: {
+    reset: (state) => {
+      state.uploads = initialState.uploads;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createImage.fulfilled, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
       state.uploads = action.payload;
     });
   },
 });
+
+export const { reset } = uploadsSlice.actions; // Exporta la acción directamente
 
 export default uploadsSlice.reducer;
