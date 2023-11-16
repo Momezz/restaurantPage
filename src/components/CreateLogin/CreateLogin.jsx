@@ -3,35 +3,16 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useState, useEffect } from 'react';
-import { createImage } from '../../features/uploads/uploadsSlice';
+import { useState } from 'react';
+import FormImage from '../FormImage/FormImage';
 import { createUser } from '../../services/users';
 
 const CreateLogin = () => {
-  const { uploads } = useSelector((state) => state.upload);
-  const [file, setFile] = useState([]);
   const [result, setResult] = useState('');
   const [showMessage, setShowMessage] = useState(false);
+  const { uploads } = useSelector((state) => state.upload);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => { }, [uploads]);
-  const handleChangeImage = ({ target }) => {
-    const { files } = target;
-    const image = files[0];
-    setFile(image);
-  };
-
-  const handleCreateLogin = () => {
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 4000);
-  };
-
-  const handleClick = () => {
-    document.getElementById('form-menu').reset();
-  };
 
   const validationSchema = Yup.object().shape({
     name: Yup
@@ -58,6 +39,14 @@ const CreateLogin = () => {
     image: Yup
       .string(),
   });
+
+  const handleCreateLogin = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 3000);
+  };
+
   const formik = useFormik({
     initialValues: {
       image: '',
@@ -87,17 +76,6 @@ const CreateLogin = () => {
     },
   });
 
-  const handleSubmitimage = async (event) => {
-    event.preventDefault();
-    if (file) {
-      try {
-        dispatch(createImage(file));
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
-  };
-
   return (
     <article className="create-login__container">
       <div className={showMessage ? 'create-login__message' : 'create-login__message-display-none'}>
@@ -106,37 +84,7 @@ const CreateLogin = () => {
         </p>
       </div>
       <h2 className="create-login__title">Crea tu cuenta</h2>
-      <div className="form__img-container">
-        <form
-          id="form-menu"
-          className="form__img-form"
-          onSubmit={handleSubmitimage}
-        >
-          <h2 className="form__image-text">Seleccionar imagen</h2>
-          <div className="form__file">
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              className="form-menu__imput-file"
-              onChange={handleChangeImage}
-            />
-          </div>
-          <button
-            id="form-menu__img-button"
-            className="form__btn"
-            type="submit"
-            onClick={handleClick}
-          >
-            Cargar imagen
-          </button>
-        </form>
-        {uploads ? (
-          <figure className="form-menu__cont">
-            <img className="form-menu__img-preview" src={uploads} alt="imagen a cargar" />
-          </figure>
-        ) : null}
-      </div>
+      <FormImage />
       <form className="create-login__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"
