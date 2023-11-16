@@ -1,6 +1,7 @@
 .form-img__container {
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   display: flex;
 }
 
@@ -11,34 +12,43 @@
   width: 90%;
 }
 
-.form__img-text {
-  color: rgba(255, 255, 255, 0.826);
+.form__img-title {
+  color: #fad12c8b;
   margin-bottom: 5px;
   text-align: center;
   margin-top: 15px;
-  font-size: 27px;
+  font-size: 18px;
+  height: 30px;
+  width: 100%;
 }
 
 .form__img-file {
+  border-top: 2px solid rgba(255, 255, 255, 0.826);
   color: rgba(255, 255, 255, 0.826);
   background-color: #67676700;
-  border-top: 2px solid white;
-  padding-bottom: 35px;
+  border-radius: 50%;
   border-style: solid;
   position: relative;
   margin-left: 25px;
   overflow: hidden;
   display: flex;
-  width: 100%;
 }
 
 .form__img-file [type=file] {
-  position: absolute;
   text-align: right;
   cursor: inherit;
+  cursor: pointer;
   display: block;
-  height: 35px;
+  height: 120px;
+  width: 120px;
   opacity: 0;
+}
+
+.edit-profile__editable-image {
+  border-radius: 50%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
   right: 0;
   top: 0;
 }
@@ -46,7 +56,6 @@
 .form__img-btn {
   background-color: #fad12c8b;
   margin-bottom: 22px;
-  margin-left: 25px;
   color: #F9F9F9;
   font-weight: 700;
   margin-top: 22px;

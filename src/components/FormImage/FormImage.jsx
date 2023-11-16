@@ -2,13 +2,16 @@ import './styles.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createImage } from '../../features/uploads/uploadsSlice';
+import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 
 const FormImage = () => {
   const [file, setFile] = useState([]);
   const { uploads } = useSelector((state) => state.upload);
+  const userStorage = JSON.parse(localStorage.getItem('userData'));
   const dispatch = useDispatch();
 
   useEffect(() => { }, [uploads]);
+
   const handleChangeImage = ({ target }) => {
     const { files } = target;
     const image = files[0];
@@ -33,8 +36,15 @@ const FormImage = () => {
         className="form__img-form"
         onSubmit={handleSubmitimage}
       >
-        <h2 className="form__img-text">Seleccionar imagen</h2>
+        <h2 className="form__img-title">Seleccionar imagen</h2>
         <div className="form__img-file">
+          <div>
+            {
+              userStorage && userStorage.image
+                ? <img className="edit-profile__editable-image" src={userStorage.image} alt="imagen" />
+                : <img className="edit-profile__editable-image" src={profileDefault} alt="imagen por defecto" />
+            }
+          </div>
           <input
             type="file"
             name="image"
