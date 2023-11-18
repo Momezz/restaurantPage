@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   CardNumberElement, CardExpiryElement, CardCvcElement, useElements, useStripe,
 } from '@stripe/react-stripe-js';
@@ -9,6 +10,7 @@ import americanExpress from '../../assets/americanexpress.png';
 import visa from '../../assets/visa.png';
 import cvc from '../../assets/cvc.png';
 import PaymentResponse from '../PaymentResponse/PaymentResponse';
+import { resetCart } from '../../features/shopping/shoppingSlice';
 import './styles.css';
 
 const PayNowForm = ({ totalPrice }) => {
@@ -17,6 +19,7 @@ const PayNowForm = ({ totalPrice }) => {
   const [isCardNumberValid, setCardNumberValid] = useState(false);
   const [isCardExpiryValid, setCardExpiryValid] = useState(false);
   const [isCardCvcValid, setCardCvcValid] = useState(false);
+  const dispatch = useDispatch();
   const elements = useElements();
   const stripe = useStripe();
   const handleChangeCardNumber = (event) => {
@@ -51,6 +54,9 @@ const PayNowForm = ({ totalPrice }) => {
         if (paymentIntent) {
           setStateAction(paymentIntent.message);
           hanleOcultar();
+          if (paymentIntent.message === 'success') {
+            dispatch(resetCart());
+          }
         } else {
           setStateAction('Hubo un problema inesperado');
           hanleOcultar();

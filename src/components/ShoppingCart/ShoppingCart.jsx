@@ -10,9 +10,9 @@ const ShoppingCart = ({ item }) => {
   };
 
   return (
-    <div>
+    <div className="shopping-cart__container">
       <button
-        className="shopping-cart__container"
+        className="shopping-cart__btn"
         onClick={handleAdd}
         type="button"
       >
