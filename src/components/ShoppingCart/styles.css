@@ -1,21 +1,32 @@
 .shopping-cart__container {
-  background-color: rgba(255, 255, 255, 0.589);
+  transition: transform 0.3s ease;
+  background-color: #fad12c;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
 .shopping-cart__container:hover {
-  height: 60px;
-  width: 60px;
+  transform: scale(1.2);
+}
+
+.shopping-cart__btn {
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .shopping-cart__container ion-icon {
-  background-color: black;
+  background-color: transparent;
   border-radius: 50%;
   font-size: 60px;
   color: white;
   margin: 0 auto;
-  height: 80%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
 }
