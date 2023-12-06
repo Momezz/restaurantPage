@@ -4,19 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
-import { createImage } from '../../features/uploads/uploadsSlice';
+import { reset } from '../../features/uploads/uploadsSlice';
 import { updateUser } from '../../features/users/usersSlice';
-import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 import PaymentResponse from '../PaymentResponse/PaymentResponse';
+import FormImage from '../FormImage/FormImage';
 
 const EditProfileForm = () => {
   const { id } = useParams();
   const { uploads } = useSelector((state) => state.upload);
-  const [file, setFile] = useState('');
   const [imageProfile, setImageProfile] = useState(uploads);
-  const [isButtonDisabled, setButtonDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [stateAction, setStateAction] = useState(false);
+  const [stateAction, setStateAction] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStorage = JSON.parse(localStorage.getItem('userData'));
@@ -24,7 +22,6 @@ const EditProfileForm = () => {
 
   useEffect(() => {
     formik.setValues({
-      image: imageProfile || '',
       name: userStorage.name || '',
       email: userStorage.email || '',
       phone: userStorage.phone || '',
@@ -38,16 +35,6 @@ const EditProfileForm = () => {
       setImageProfile(uploads);
     }
   }, [uploads]);
-  const handleChangeImage = ({ target }) => {
-    const { files } = target;
-    const image = files[0];
-    setFile(image);
-    setButtonDisabled(false);
-  };
-
-  const handleClick = () => {
-    document.getElementById('form-menu').reset();
-  };
 
   const resetValueLoading = () => {
     setLoading(true);
@@ -69,12 +56,9 @@ const EditProfileForm = () => {
       .string()
       .min(10, 'El número debe tener al menos 10 caracteres.')
       .required('Campo obligatorio'),
-    image: Yup
-      .string(),
   });
   formik = useFormik({
     initialValues: {
-      image: '',
       name: '',
       email: '',
       phone: '',
@@ -87,78 +71,30 @@ const EditProfileForm = () => {
           const response = await dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
           if (typeof response.payload === 'string') {
             resetValueLoading();
-            setStateAction(false);
+            setStateAction('Se ha producido un error inesperado.');
           } else if (typeof response.payload === 'object') {
-            setStateAction(true);
+            setStateAction('Cambios aplicados exitosamente.');
+            dispatch(reset());
             resetValueLoading();
             setTimeout(() => {
               navigate('/profile');
             }, 4000);
           } else {
-            setStateAction(false);
+            setStateAction('Se ha producido un error inesperado.');
             resetValueLoading();
           }
         }
       } catch (error) {
+        setStateAction('Se ha producido un error inesperado.');
         throw new Error(error);
       }
     },
   });
 
-  const handleSubmitimage = async (event) => {
-    event.preventDefault();
-    if (file) {
-      try {
-        dispatch(createImage(file));
-      } catch (error) {
-        throw new Error(error);
-      }
-    }
-  };
-
   return (
     <article className="edit-profile__container">
       <h2 className="edit-profile__title">Edita tu perfil</h2>
-      <div className="edit-profile__img-container">
-        <form
-          id="form-menu"
-          className="edit-profile__img-form"
-          onSubmit={handleSubmitimage}
-        >
-          <h2 className="edit-profile__image-text">Seleccionar imagen</h2>
-          <div className="edit-profile__file">
-            <div className="edit-profile__editable-image">
-              {
-                userStorage.image
-                  ? <img src={userStorage.image} alt="imagen" />
-                  : <img src={profileDefault} alt="imagen por defecto" />
-              }
-            </div>
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              onChange={handleChangeImage}
-            />
-          </div>
-          <div className="edit-profile__cont">
-            <button
-              id="form-menu__img-button"
-              className="edit-profile__btn"
-              type="submit"
-              onClick={handleClick}
-              disabled={isButtonDisabled}
-            >
-              Cargar imagen
-            </button>
-          </div>
-        </form>
-        {uploads ? (
-          <figure className="edit-profile__cont">
-            <img className="edit-profile__img-preview" src={uploads} alt="Imagen de perfil" />
-          </figure>
-        ) : null}
-      </div>
+      <FormImage />
       <form className="edit-profile__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"

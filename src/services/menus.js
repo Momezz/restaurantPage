@@ -59,3 +59,9 @@ export const formatPrice = (price) => {
   partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return `$ ${partes.join('.')}`;
 };
+
+export const createCategoryList = (menuList) => {
+  const categoriesSet = new Set(menuList.map((item) => item.category));
+  const uniqueCategory = [...categoriesSet];
+  return uniqueCategory;
+};

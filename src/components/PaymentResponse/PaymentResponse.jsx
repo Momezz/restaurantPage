@@ -3,14 +3,14 @@ import './styles.css';
 
 const PaymentResponse = ({ stateAction }) => (
   <article className="payment-response__container">
-    {stateAction && typeof stateAction === 'boolean'
-      ? <h2>Acción realizada con éxito</h2>
-      : <p>Resultado fallido, inténtalo de nuevo</p>}
+    {stateAction
+      ? <p>{stateAction}</p>
+      : <h2>Hubo un problema inesperado</h2>}
   </article>
 );
 
 PaymentResponse.propTypes = {
-  stateAction: PropTypes.bool.isRequired,
+  stateAction: PropTypes.string.isRequired,
 };
 
 export default PaymentResponse;
