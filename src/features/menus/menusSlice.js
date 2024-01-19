@@ -20,11 +20,13 @@ export const getMenuById = createAsyncThunk('menus/getMenuById', async (id) => {
   return data;
 });
 
-export const createMenu = createAsyncThunk('menus/createMenu', async (menu) => {
+export const createMenu = createAsyncThunk('menus/createMenu', async (menu, { getState }) => {
+  const authToken = getState().login.user.token;
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify(menu),
   };
