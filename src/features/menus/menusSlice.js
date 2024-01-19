@@ -43,11 +43,13 @@ export const deleteMenu = createAsyncThunk('menus/deleteMenu', async (id) => {
   return id;
 });
 
-export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu) => {
+export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu, { getState }) => {
+  const authToken = getState().login.user.token;
   const options = {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify(menu),
   };

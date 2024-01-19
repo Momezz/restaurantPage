@@ -20,6 +20,13 @@ export const getMenus = async () => {
   return result;
 };
 
+export const getMenu = async (id) => {
+  const res = await fetch(`${BASE_URL}/api/menu/${id}`);
+  const result = await res.json();
+  console.log('el resultado', result);
+  return result;
+};
+
 export const deleteMenu = async (id) => {
   const options = {
     method: 'DELETE',
