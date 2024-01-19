@@ -20,11 +20,13 @@ export const getMenuById = createAsyncThunk('menus/getMenuById', async (id) => {
   return data;
 });
 
-export const createMenu = createAsyncThunk('menus/createMenu', async (menu) => {
+export const createMenu = createAsyncThunk('menus/createMenu', async (menu, { getState }) => {
+  const authToken = getState().login.user.token;
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify(menu),
   };
@@ -43,11 +45,13 @@ export const deleteMenu = createAsyncThunk('menus/deleteMenu', async (id) => {
   return id;
 });
 
-export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu) => {
+export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu, { getState }) => {
+  const authToken = getState().login.user.token;
   const options = {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
     },
     body: JSON.stringify(menu),
   };
