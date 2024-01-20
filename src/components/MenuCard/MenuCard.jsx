@@ -11,29 +11,34 @@ import './styles.css';
 const MenuCard = ({ product }) => {
   const userLogin = useSelector((state) => state.login.user.user);
   const [deleteProduct, setDeleteProduct] = useState(0);
-
   const handleDelet = () => {
-    setDeleteProduct(product._id);
+    if (product) {
+      setDeleteProduct(product._id);
+    }
   };
-
   const role = convert(userLogin);
 
   return (
     <article className="menu-card__container" key={product._id}>
-      <Link
-        to={`/details/${product._id}`}
+      <button
+        onClick={handleDelet}
+        className={role ? 'menu-card__delete-icon' : 'menu-card__delete-none'}
+        type="button"
       >
+        <ion-icon name="trash-outline" className="menu-ca" />
+      </button>
+      <Link to={`/details/${product._id}`}>
         <div className="menu-card__table">
-          <button
-            onClick={handleDelet}
-            className={role ? 'menu-card__delete-icon' : 'menu-card__delete-none'}
-            type="button"
-          ><ion-icon name="trash-outline" />
-          </button>
           <div className="menu-card__tr">
-            <h2 className="menu-card__td-title menu-card__td">{product.name}</h2>
+            <h2 className="menu-card__td-title menu-card__td">
+              {product.name}
+            </h2>
             <div className="menu-card__img-container">
-              <img className="menu-card__img" src={product.image} alt="Imagen" />
+              <img
+                className="menu-card__img"
+                src={product.image}
+                alt="Imagen"
+              />
             </div>
             <span className="menu-card__td">{formatPrice(product.price)}</span>
           </div>
@@ -41,22 +46,17 @@ const MenuCard = ({ product }) => {
         </div>
       </Link>
       <div className="menu-card__link-cont">
-        <Link
-          className="menu-card__link"
-          to={`/manage-conten/${product._id}`}
-        >
+        <Link className="menu-card__link" to={`/manage-conten/${product._id}`}>
           <ion-icon name="restaurant-outline" />
         </Link>
         <div className={!role ? 'menu-card__link-layer' : null}> </div>
       </div>
       <div className="menu-card__delet-component">
-        {
-          deleteProduct === product._id && (
-            <div className="menu-card__confir-delete">
-              <ConfirmDelete id={product._id} />
-            </div>
-          )
-        }
+        {deleteProduct === product._id && (
+          <div className="menu-card__confir-delete">
+            <ConfirmDelete id={product._id} />
+          </div>
+        )}
       </div>
       <div className="menu-card__shopping-cart">
         <ShoppingCart item={product} />

@@ -10,16 +10,35 @@
   width: 350px;
 }
 
+.menu-card__delete-icon {
+  transition: transform 0.7s ease;
+  position: absolute;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+  left: 0px;
+  top: 10px;
+}
+
+.menu-card__delete-icon:hover {
+  background-color: red;
+}
+
+.menu-card__delete-icon ion-icon {
+  background-color: rgba(0, 0, 0, 0.544);
+  position: absolute;
+  z-index: 1000;
+  border: none;
+  left: -5px;
+  top: -5px;
+}
+
 .menu-card__table {
   background-color: rgba(0, 0, 0, 0.589);
   position: relative;
   height: 350px;
   width: 350px;
   margin: 10px;
-}
-
-.menu-card__delete-icon {
-  background-color: rgba(0, 0, 0, 0.589);
 }
 
 .menu-card__delete-none {
@@ -94,13 +113,8 @@
 
 .menu-card__confir-delete {
   position: absolute;
-  right: -165px;
-  bottom: 50px;
-}
-
-.menu-card__delete-icon ion-icon {
-  background-color: rgba(0, 0, 0, 0.589);
-  border: none;
+  left: -160px;
+  bottom: 30px;
 }
 
 .menu-card__shopping-cart {
@@ -120,5 +134,10 @@
     width: 320px;
     padding: 0;
     margin: 0;
+  }
+
+  .menu-card__delete-icon {
+    left: -15px;
+    top: 10px;
   }
 }
