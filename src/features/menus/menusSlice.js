@@ -20,46 +20,60 @@ export const getMenuById = createAsyncThunk('menus/getMenuById', async (id) => {
   return data;
 });
 
-export const createMenu = createAsyncThunk('menus/createMenu', async (menu, { getState }) => {
-  const authToken = getState().login.user.token;
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
-    },
-    body: JSON.stringify(menu),
-  };
+export const createMenu = createAsyncThunk(
+  'menus/createMenu',
+  async (menu, { getState }) => {
+    const authToken = getState().login.user.token;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(menu),
+    };
 
-  const response = await fetch(`${BASE_URL}/api/menu/`, options);
-  const data = await response.json();
-  return data;
-});
+    const response = await fetch(`${BASE_URL}/api/menu/`, options);
+    const data = await response.json();
+    return data;
+  },
+);
 
-export const deleteMenu = createAsyncThunk('menus/deleteMenu', async (id) => {
-  const options = {
-    method: 'DELETE',
-  };
+export const deleteMenu = createAsyncThunk(
+  'menus/deleteMenu',
+  async (id, { getState }) => {
+    const authToken = getState().login.user.token;
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+    };
 
-  await fetch(`${BASE_URL}/api/menu/${id}`, options);
-  return id;
-});
+    await fetch(`${BASE_URL}/api/menu/${id}`, options);
+    return id;
+  },
+);
 
-export const updateMenu = createAsyncThunk('menus/updateMenu', async (menu, { getState }) => {
-  const authToken = getState().login.user.token;
-  const options = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
-    },
-    body: JSON.stringify(menu),
-  };
+export const updateMenu = createAsyncThunk(
+  'menus/updateMenu',
+  async (menu, { getState }) => {
+    const authToken = getState().login.user.token;
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify(menu),
+    };
 
-  const response = await fetch(`${BASE_URL}/api/menu/${menu._id}`, options);
-  const data = await response.json();
-  return data;
-});
+    const response = await fetch(`${BASE_URL}/api/menu/${menu._id}`, options);
+    const data = await response.json();
+    return data;
+  },
+);
 
 const menusSlice = createSlice({
   name: 'menus',
