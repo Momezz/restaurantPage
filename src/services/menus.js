@@ -23,7 +23,6 @@ export const getMenus = async () => {
 export const getMenu = async (id) => {
   const res = await fetch(`${BASE_URL}/api/menu/${id}`);
   const result = await res.json();
-  console.log('el resultado', result);
   return result;
 };
 

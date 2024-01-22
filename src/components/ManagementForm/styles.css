@@ -1,30 +1,31 @@
-.form-menu__img-container{
+.form-menu__img-container {
   background-color: #67676783;
   flex-direction: column;
   align-items: center;
-  min-width: 300px;
+  min-width: 360px;
   display: flex;
 }
 
-.form-menu__img-form{
+.form-menu__img-form {
   flex-direction: column;
   display: flex;
   width: 90%;
 }
 
-.management-form__container{
+.management-form__container {
   background-color: #67676783;
+  position: relative;
   min-width: 300px;
 }
 
-.management-form__title{
+.management-form__title {
   text-align: center;
   color: #fad12c8b;
   font-size: 35px;
   padding: 12px;
 }
 
-.management-form__subcont{
+.management-form__subcont {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 20px;
@@ -34,7 +35,7 @@
   display: flex;
 }
 
-.management-form__input{
+.management-form__input {
   color: rgba(255, 255, 255, 0.826);
   background-color: #67676700;
   border-top: 2px solid white;
@@ -45,12 +46,13 @@
   height: 40px;
   width: 95%;
 }
-.management-form__option{
+
+.management-form__option {
   background-color: rgba(253, 250, 250, 0.863);
   color: gray;
 }
 
-.management-form__select{
+.management-form__select {
   color: rgba(255, 255, 255, 0.826);
   background-color: #67676700;
   border-top: 2px solid white;
@@ -62,11 +64,11 @@
   width: 95%;
 }
 
-.management-form__textarea{
+.management-form__textarea {
   min-height: 100px;
 }
 
-.management-form__btn{
+.management-form__btn {
   background-color: #fad12c8b;
   margin-bottom: 22px;
   color: #F9F9F9;
@@ -78,11 +80,11 @@
   width: 95%;
 }
 
-.management-form__btn:hover{
+.management-form__btn:hover {
   background-color: #eacd59;
 }
 
-.management-form__image-text{
+.management-form__image-text {
   color: rgba(255, 255, 255, 0.826);
   margin-bottom: 5px;
   text-align: center;
@@ -90,7 +92,7 @@
   font-size: 27px;
 }
 
-.management-form__file{
+.management-form__file {
   position: relative;
   overflow: hidden;
 }
@@ -107,23 +109,37 @@
 }
 
 .management-form__file {
-color: rgba(255, 255, 255, 0.826);
-background-color: #67676700;
-border-top: 2px solid white;
-padding-bottom: 35px;
-border-style: solid;
+  color: rgba(255, 255, 255, 0.826);
+  background-color: #67676700;
+  border-top: 2px solid white;
+  padding-bottom: 35px;
+  border-style: solid;
 }
 
 .management-form__file [type=file] {
   cursor: pointer;
 }
 
-@media(min-width: 768px){
-  .forms__container{
+.management-form__visible {
+  position: absolute;
+  text-align: center;
+  height: 100vh;
+  width: 93%;
+  right: 10;
+  top: 0%;
+}
+
+.management-form__hidden {
+  display: none;
+}
+
+@media(min-width: 768px) {
+  .forms__container {
     display: flex;
     align-items: center;
   }
-  .management-form__container{
+
+  .management-form__container {
     margin: 25px;
   }
 }

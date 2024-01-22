@@ -1,18 +1,24 @@
 import './styles.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm';
+import { reset } from '../../features/uploads/uploadsSlice';
 import { getMenu } from '../../services/menus';
 import { createMenu, updateMenu } from '../../features/menus/menusSlice';
 import FormImage from '../FormImage/FormImage';
+import PaymentResponse from '../PaymentResponse/PaymentResponse';
 
 const ManagementForm = () => {
   const { id } = useParams();
   const { uploads } = useSelector((state) => state.upload);
+  const [imageProfile, setImageProfile] = useState(uploads);
+  const [loading, setLoading] = useState(false);
+  const [stateAction, setStateAction] = useState('');
   const { form, handleChange } = useForm({});
   const dispatch = useDispatch();
   const [data, setData] = useState('');
+  const navigate = useNavigate();
   const getData = async () => {
     try {
       const result = await getMenu(id);
@@ -23,19 +29,50 @@ const ManagementForm = () => {
   };
 
   useEffect(() => {
+    if (uploads === '') {
+      setImageProfile(data.image);
+    } else {
+      setImageProfile(uploads);
+    }
+  }, [uploads]);
+  useEffect(() => {
     if (id) {
       getData();
     }
   }, []);
+  const resetValueLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
+
+  const generateResponse = (res) => {
+    if (typeof res.payload === 'string') {
+      resetValueLoading();
+      setStateAction('Se ha producido un error inesperado.');
+    } else if (typeof res.payload === 'object') {
+      setStateAction('Acción realizada exitosamente.');
+      dispatch(reset());
+      resetValueLoading();
+      setTimeout(() => {
+        navigate('/menu');
+      }, 4000);
+    } else {
+      setStateAction('Se ha producido un error inesperado.');
+      resetValueLoading();
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       if (id) {
-        dispatch(updateMenu({ ...form, _id: id }));
-      }
-      if (uploads && id === undefined) {
-        dispatch(createMenu({ ...form, image: uploads }));
+        const response = await dispatch(updateMenu({ ...form, _id: id, image: imageProfile }));
+        generateResponse(response);
+      } else {
+        const response = await dispatch(createMenu({ ...form, image: uploads }));
+        generateResponse(response);
       }
     } catch (error) {
       throw new Error(error);
@@ -45,12 +82,7 @@ const ManagementForm = () => {
   return (
     <section className="forms__container">
       <div className="form-menu__img-container">
-        <FormImage />
-        {uploads ? (
-          <figure className="form-menu__img-preview">
-            <img src={uploads} alt="" />
-          </figure>
-        ) : null}
+        <FormImage linkImage={id ? data.image : ''} />
       </div>
       <article className="management-form__container">
         <h2 className="management-form__title">Hello</h2>
@@ -96,6 +128,11 @@ const ManagementForm = () => {
           /><br /><br />
           <input className="management-form__btn" type="submit" value="Done" />
         </form>
+        <article
+          className={loading ? 'management-form__visible' : 'management-form__hidden'}
+        >
+          <PaymentResponse stateAction={stateAction} />
+        </article>
       </article>
     </section>
   );

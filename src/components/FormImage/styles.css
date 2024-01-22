@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   display: flex;
+  width: 360px;
 }
 
 .form__img-form {
@@ -76,5 +77,5 @@
 }
 
 .form__img-img-preview {
-  width: 300px;
+  max-width: 300px;
 }
