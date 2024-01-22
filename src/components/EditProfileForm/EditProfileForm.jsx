@@ -10,11 +10,11 @@ import PaymentResponse from '../PaymentResponse/PaymentResponse';
 import FormImage from '../FormImage/FormImage';
 
 const EditProfileForm = () => {
-  const { id } = useParams();
   const { uploads } = useSelector((state) => state.upload);
   const [imageProfile, setImageProfile] = useState(uploads);
   const [loading, setLoading] = useState(false);
   const [stateAction, setStateAction] = useState('');
+  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStorage = JSON.parse(localStorage.getItem('userData'));
@@ -34,7 +34,7 @@ const EditProfileForm = () => {
     } else {
       setImageProfile(uploads);
     }
-  }, [uploads]);
+  }, []);
 
   const resetValueLoading = () => {
     setLoading(true);
@@ -43,17 +43,12 @@ const EditProfileForm = () => {
     }, 3000);
   };
   const validationSchema = Yup.object().shape({
-    name: Yup
-      .string()
+    name: Yup.string()
       .min(2, 'El nombre es muy corto')
       .max(35, 'El nombre es muy largo')
       .required('Campo obligatorio'),
-    email: Yup
-      .string()
-      .email('Email inválido')
-      .required('Campo obligatorio'),
-    phone: Yup
-      .string()
+    email: Yup.string().email('Email inválido').required('Campo obligatorio'),
+    phone: Yup.string()
       .min(10, 'El número debe tener al menos 10 caracteres.')
       .required('Campo obligatorio'),
   });
@@ -68,14 +63,16 @@ const EditProfileForm = () => {
     onSubmit: async (values) => {
       try {
         if (id) {
-          const response = await dispatch(updateUser({ ...values, image: imageProfile, _id: id }));
+          const response = await dispatch(
+            updateUser({ ...values, image: imageProfile, _id: id }),
+          );
           if (typeof response.payload === 'string') {
             resetValueLoading();
             setStateAction('Se ha producido un error inesperado.');
           } else if (typeof response.payload === 'object') {
             setStateAction('Cambios aplicados exitosamente.');
-            dispatch(reset());
             resetValueLoading();
+            dispatch(reset());
             setTimeout(() => {
               navigate('/profile');
             }, 4000);
@@ -94,7 +91,7 @@ const EditProfileForm = () => {
   return (
     <article className="edit-profile__container">
       <h2 className="edit-profile__title">Edita tu perfil</h2>
-      <FormImage />
+      <FormImage linkImage={imageProfile !== '' ? imageProfile : ''} />
       <form className="edit-profile__subcont" onSubmit={formik.handleSubmit}>
         <input
           type="text"
@@ -105,7 +102,9 @@ const EditProfileForm = () => {
           onChange={formik.handleChange}
           defaultValue={userStorage.name}
         />
-        <div className="edit-profile__error">{formik.errors.name && formik.touched.name ? formik.errors.name : ''}</div>
+        <div className="edit-profile__error">
+          {formik.errors.name && formik.touched.name ? formik.errors.name : ''}
+        </div>
         <input
           type="email"
           id="email"
@@ -115,7 +114,11 @@ const EditProfileForm = () => {
           onChange={formik.handleChange}
           defaultValue={userStorage.email}
         />
-        <div className="edit-profile__error">{formik.errors.email && formik.touched.email ? formik.errors.email : ''}</div>
+        <div className="edit-profile__error">
+          {formik.errors.email && formik.touched.email
+            ? formik.errors.email
+            : ''}
+        </div>
         <input
           type="phone"
           id="phone"
@@ -125,12 +128,22 @@ const EditProfileForm = () => {
           onChange={formik.handleChange}
           defaultValue={userStorage.phone}
         />
-        <div className="edit-profile__error">{formik.errors.phone && formik.touched.phone ? formik.errors.phone : ''}</div>
+        <div className="edit-profile__error">
+          {formik.errors.phone && formik.touched.phone
+            ? formik.errors.phone
+            : ''}
+        </div>
         <div className="edit-profile__cont">
-          <input className="edit-profile__btn-inf" type="submit" value="Editar" />
+          <input
+            className="edit-profile__btn-inf"
+            type="submit"
+            value="Editar"
+          />
         </div>
       </form>
-      <article className={loading ? 'edit-profile__visible' : 'edit-profile__hidden'}>
+      <article
+        className={loading ? 'edit-profile__visible' : 'edit-profile__hidden'}
+      >
         <PaymentResponse stateAction={stateAction} />
       </article>
     </article>

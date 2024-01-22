@@ -16,7 +16,6 @@ export const createImage = createAsyncThunk('uploads/createImage', async (file) 
 
   formData.append('file', file);
   formData.append('fileName', file.name);
-
   const response = await fetch(`${BASE_URL}/api/upload/file`, options);
   const data = await response.json();
   const url = await data.url;
@@ -38,6 +37,6 @@ const uploadsSlice = createSlice({
   },
 });
 
-export const { reset } = uploadsSlice.actions; // Exporta la acción directamente
+export const { reset } = uploadsSlice.actions;
 
 export default uploadsSlice.reducer;

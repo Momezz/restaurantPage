@@ -1,17 +1,16 @@
 import './styles.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createImage } from '../../features/uploads/uploadsSlice';
+import PropTypes from 'prop-types';
+import { createImage, reset } from '../../features/uploads/uploadsSlice';
 import profileDefault from '../../assets/imagesApp/profileDefault.jpg';
 
-const FormImage = () => {
+const FormImage = ({ linkImage }) => {
   const [file, setFile] = useState([]);
   const { uploads } = useSelector((state) => state.upload);
-  const userStorage = JSON.parse(localStorage.getItem('userData'));
   const dispatch = useDispatch();
 
-  useEffect(() => { }, [uploads]);
-
+  useEffect(() => {}, [uploads]);
   const handleChangeImage = ({ target }) => {
     const { files } = target;
     const image = files[0];
@@ -23,6 +22,7 @@ const FormImage = () => {
     if (file) {
       try {
         dispatch(createImage(file));
+        dispatch(reset());
       } catch (error) {
         throw new Error(error);
       }
@@ -39,11 +39,19 @@ const FormImage = () => {
         <h2 className="form__img-title">Seleccionar imagen</h2>
         <div className="form__img-file">
           <div>
-            {
-              userStorage && userStorage.image
-                ? <img className="edit-profile__editable-image" src={userStorage.image} alt="imagen" />
-                : <img className="edit-profile__editable-image" src={profileDefault} alt="imagen por defecto" />
-            }
+            {linkImage !== '' ? (
+              <img
+                className="edit-profile__editable-image"
+                src={linkImage}
+                alt="imagen"
+              />
+            ) : (
+              <img
+                className="edit-profile__editable-image"
+                src={profileDefault}
+                alt="imagen por defecto"
+              />
+            )}
           </div>
           <input
             type="file"
@@ -62,12 +70,16 @@ const FormImage = () => {
         </button>
       </form>
       {uploads ? (
-        <figure className="form__preview-container">
-          <img className="form__img-img-preview" src={uploads} alt="imagen a cargar" />
+        <figure className="form-menu__img-preview">
+          <img src={uploads} alt="img-preview" />
         </figure>
       ) : null}
     </div>
   );
+};
+
+FormImage.propTypes = {
+  linkImage: PropTypes.string.isRequired,
 };
 
 export default FormImage;
